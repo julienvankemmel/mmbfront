@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { BackpackComponent } from './backpack/backpack.component';
 import { BackpackItemComponent } from './backpack-item/backpack-item.component';
 import { CategoryBackpackComponent } from './category-backpack/category-backpack.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     BackpackComponent,
     BackpackItemComponent,
-    CategoryBackpackComponent
+    CategoryBackpackComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
