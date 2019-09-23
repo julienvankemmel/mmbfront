@@ -7,7 +7,6 @@ import { BackpackComponent } from './backpack/backpack.component';
 import { BackpackItemComponent } from './backpack-item/backpack-item.component';
 import { CategoryBackpackComponent } from './category-backpack/category-backpack.component';
 import { NotationComponent } from './notation/notation.component';
-import { SaisonComponent } from './saison/saison.component';
 import { SeasonComponent } from './season/season.component';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { SeasonComponent } from './season/season.component';
     BackpackItemComponent,
     CategoryBackpackComponent,
     NotationComponent,
-    SaisonComponent,
     SeasonComponent
   ],
   imports: [
