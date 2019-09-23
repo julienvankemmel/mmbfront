@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { BackpackComponent } from './backpack/backpack.component';
 import { BackpackItemComponent } from './backpack-item/backpack-item.component';
 import { CategoryBackpackComponent } from './category-backpack/category-backpack.component';
-
+import { NotationComponent } from './notation/notation.component';
+import { SeasonComponent } from './season/season.component';
 import { TripComponent } from './trip/trip.component';
 import { UserComponent } from './user/user.component';
 
@@ -18,6 +19,8 @@ import { UserComponent } from './user/user.component';
     BackpackItemComponent,
     CategoryBackpackComponent,
     TripComponent,
+    NotationComponent,
+    SeasonComponent,
     UserComponent
   ],
   imports: [
