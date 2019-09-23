@@ -8,13 +8,24 @@ import { BackpackItemComponent } from './backpack-item/backpack-item.component';
 import { CategoryBackpackComponent } from './category-backpack/category-backpack.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { NotationComponent } from './notation/notation.component';
+import { SeasonComponent } from './season/season.component';
+import { TripComponent } from './trip/trip.component';
+import { UserComponent } from './user/user.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     BackpackComponent,
     BackpackItemComponent,
     CategoryBackpackComponent,
-    LoginComponent
+    LoginComponent,
+    LoginComponent,
+    TripComponent,
+    NotationComponent,
+    SeasonComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
