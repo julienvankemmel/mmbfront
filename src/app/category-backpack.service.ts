@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryBackpackService {
+  
   constructor(private http:HttpClient) { }
   getCategoryBackpack():Observable<any[]>{
     return this.http.get<any[]>('http://127.0.0.1:8000/api/category_backpacks')
