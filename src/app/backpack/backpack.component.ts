@@ -22,7 +22,7 @@ export class BackpackComponent implements OnInit {
     });
 
     /**
-     * affichage des datas de l'utilisateur
+     * affichage des datas de l'utilisateur (pour test)
      */
     this.user = this.loginService.getUserData()
     .subscribe(data => {

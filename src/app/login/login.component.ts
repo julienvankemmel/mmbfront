@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    // efface le jwt
+    // efface le jwt (pour test)
     localStorage.removeItem('jwt');
   }
   onSubmit(form) {
