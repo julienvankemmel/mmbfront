@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+   
+      <!-- il faut passer dans les names la même valeur que celle attendue par l'API  -->
+      <input type="text" class="form-control" name="username" [ngModel]="name">
+   
+   
+                <!-- il faut passer dans les names la même valeur que celle attendue par l'API  -->
+      <input type="text" class="form-control" name="password" [ngModel]="name">
+    
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+  </form>
