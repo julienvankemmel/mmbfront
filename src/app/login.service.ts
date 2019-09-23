@@ -4,7 +4,6 @@ import { map, tap, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HeaderService } from './header.service';
 import {Router} from '@angular/router';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 /**
  * Ce service gère :
@@ -53,6 +52,21 @@ export class LoginService {
 
   }
 
+   /**
+    *
+    * @param user
+    * méthode register utilisateur
+    */
+   register(user: any): Observable<any> {
+    const url = 'http://127.0.0.1:8000/apiuser/register';
+    return this.http.post<any>(url, user, { responseType: 'json' })
+      .pipe(
+
+        catchError(this.handleError<any>('login'))
+      );
+
+  }
+
     /**
      * affichage liste utilisateurs (pour test)
      */
@@ -69,7 +83,7 @@ private handleError<T>(operation = 'operation', result?: T) {
 
     // TODO: send the error to remote logging infrastructure
     // console.error(error); // log to console instead
-     window.alert(error.message);
+     window.alert(error.error.violations[0].title);
 
     // TODO: better job of transforming error for user consumption
     // console.log(`${operation} failed: ${error.message}`);

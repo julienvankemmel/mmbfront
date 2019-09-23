@@ -12,6 +12,7 @@ import { NotationComponent } from './notation/notation.component';
 import { SeasonComponent } from './season/season.component';
 import { TripComponent } from './trip/trip.component';
 import { UserComponent } from './user/user.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { UserComponent } from './user/user.component';
     TripComponent,
     NotationComponent,
     SeasonComponent,
-    UserComponent
+    UserComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
