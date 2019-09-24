@@ -32,7 +32,7 @@ import { RegisterComponent } from './register/register.component';
     UserComponent,
     CategoryItemComponent,
     CommentComponent,
-    CountryComponent
+    CountryComponent,
     RegisterComponent
   ],
   imports: [
