@@ -12,6 +12,9 @@ import { NotationComponent } from './notation/notation.component';
 import { SeasonComponent } from './season/season.component';
 import { TripComponent } from './trip/trip.component';
 import { UserComponent } from './user/user.component';
+import { CategoryItemComponent } from './category-item/category-item.component';
+import { CommentComponent } from './comment/comment.component';
+import { CountryComponent } from './country/country.component';
 import { RegisterComponent } from './register/register.component';
 
 
@@ -27,6 +30,9 @@ import { RegisterComponent } from './register/register.component';
     NotationComponent,
     SeasonComponent,
     UserComponent,
+    CategoryItemComponent,
+    CommentComponent,
+    CountryComponent
     RegisterComponent
   ],
   imports: [
