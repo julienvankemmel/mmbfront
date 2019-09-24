@@ -47,7 +47,7 @@ export class LoginService {
         // enregistrement du jwt dans le localStorage
         tap((data) => localStorage.setItem('jwt', data.token)),
 
-        catchError(this.handleError<any>('login'))
+        catchError(this.handleLoginError<any>('login'))
       );
 
   }
@@ -77,13 +77,35 @@ export class LoginService {
     );
 
     }
+
+    // Gestion des messages d'erreurs serveur
 private handleError<T>(operation = 'operation', result?: T) {
   return (error: any): Observable<T> => {
 
 
     // TODO: send the error to remote logging infrastructure
     // console.error(error); // log to console instead
-     window.alert(error.error.violations[0].title);
+     // window.alert(error.error.violations[0].title);
+
+    // TODO: better job of transforming error for user consumption
+    // console.log(`${operation} failed: ${error.message}`);
+
+
+
+    // Let the app keep running by returning an empty result.
+     return (error);
+  };
+}
+
+
+// erreur de login
+private handleLoginError<T>(operation = 'operation', result?: T) {
+  return (error: any): Observable<T> => {
+
+
+    // TODO: send the error to remote logging infrastructure
+    // console.error(error); // log to console instead
+     window.alert(error.error.message);
 
     // TODO: better job of transforming error for user consumption
     // console.log(`${operation} failed: ${error.message}`);
