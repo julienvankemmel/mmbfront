@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     .subscribe(data => window.alert(data.message));
 
     // redirection
-    this.router.navigate(['']);
+    // this.router.navigate(['']);
       }
 
 }

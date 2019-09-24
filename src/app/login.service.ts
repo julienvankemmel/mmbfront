@@ -58,7 +58,7 @@ export class LoginService {
     * méthode register utilisateur
     */
    register(user: any): Observable<any> {
-    const url = 'http://127.0.0.1:8000/apiuser/register';
+    const url = 'http://127.0.0.1:8000/api/register';
     return this.http.post<any>(url, user, { responseType: 'json' })
       .pipe(
 
@@ -71,7 +71,7 @@ export class LoginService {
      * affichage liste utilisateurs (pour test)
      */
     getUserData(): Observable<any[]> {
-  return this.http.get<any[]>('http://127.0.0.1:8000/apiuser/userdata', this.headerJwt)
+  return this.http.get<any[]>('http://127.0.0.1:8000/api/userdata', this.headerJwt)
     .pipe(
       tap(data => data)
     );
