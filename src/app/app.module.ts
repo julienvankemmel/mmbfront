@@ -33,7 +33,7 @@ import { RegisterComponent } from './register/register.component';
     CategoryItemComponent,
     CommentComponent,
     CountryComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
