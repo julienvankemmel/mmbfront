@@ -1,25 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, tap, catchError } from 'rxjs/operators';
+import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HeaderService } from './header.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackpackService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private headerService: HeaderService) { }
+
+  /**
+   * construction du header à envoyer avec la requête vers API
+   */
+  headerJwt = this.headerService.headerBuilder();
+
   getBackpack(): Observable<any[]> {
-    return this.http.get<any[]>('http://127.0.0.1:8000/api/backpacks')
+    return this.http.get<any[]>('http://127.0.0.1:8000/api/backpack', this.headerJwt)
       .pipe(
         tap(data => data)
-      )
+      );
   }
+
+
   getBackpackById(id): Observable<any> {
     return this.http.get<any>('http://127.0.0.1:8000/api/backpacks/' + id)
       .pipe(
         tap(data => data)
-      )
+      );
   }
 
   /**
@@ -54,18 +64,20 @@ export class BackpackService {
   }
 
   /**
-   * 
+   *
    * @param backpack
-   * méthode pour insérer un employé 
+   * méthode pour insérer un employé
    */
-  addBackpack(backpack): Observable<any> {
-    let url = 'http://127.0.0.1:8000/api/backpacks/';
+  addBackpack(backpack: any): Observable<any> {
+    let url = 'http://127.0.0.1:8000/api/login_check';
     return this.http.post<any>(url, backpack, { responseType: 'json' })
       .pipe(
-        tap((data) => console.log(data)),
+        tap((backpack) => backpack),
         catchError(this.handleError<any>('addbackpack'))
       );
   }
+
+
 
   /**
 * Handle Http operation that failed.
