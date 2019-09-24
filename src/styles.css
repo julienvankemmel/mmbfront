@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.bg-lightgrey{
+    background-color: #F9F9F9;
+}
+.text-raisin{
+    color:#222!important;
+}
+.bg-orange{
+    background-color: #ff6600;
+}
