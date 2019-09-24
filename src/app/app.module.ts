@@ -10,6 +10,9 @@ import { NotationComponent } from './notation/notation.component';
 import { SeasonComponent } from './season/season.component';
 import { TripComponent } from './trip/trip.component';
 import { UserComponent } from './user/user.component';
+import { CategoryItemComponent } from './category-item/category-item.component';
+import { CommentComponent } from './comment/comment.component';
+import { CountryComponent } from './country/country.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { UserComponent } from './user/user.component';
     TripComponent,
     NotationComponent,
     SeasonComponent,
-    UserComponent
+    UserComponent,
+    CategoryItemComponent,
+    CommentComponent,
+    CountryComponent
   ],
   imports: [
     BrowserModule,
