@@ -17,6 +17,8 @@ import { CommentComponent } from './comment/comment.component';
 import { CountryComponent } from './country/country.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { FooterComponent } from './footer/footer.component';
 
@@ -37,7 +39,9 @@ import { FooterComponent } from './footer/footer.component';
     CountryComponent,
     RegisterComponent,
     ContactComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
