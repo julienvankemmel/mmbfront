@@ -16,6 +16,8 @@ import { CategoryItemComponent } from './category-item/category-item.component';
 import { CommentComponent } from './comment/comment.component';
 import { CountryComponent } from './country/country.component';
 import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { RegisterComponent } from './register/register.component';
     CommentComponent,
     CountryComponent,
     RegisterComponent,
+    HomeComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+/* Background Perso */
+
+.bg-rb {
+    background-color: #222222;
+  }
+
+
+/* Couleur perso*/
+
+.bo {
+    color: #ff6600 !important;
+}
+
+.rb {
+  color: #222222;
+}
+
+/* Placement vidéo en background et personalisation de la page d'accueil */
+
+#myVideo {
+  position: sticky;
+  right: auto;
+  bottom: auto;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 300px;
+}
+
+.lab-country {
+    color: #ff6600;
+    font-size: bold;
+    font-size: 30px
+}
+
+.sel-country {
+  color: #222222;
+  font-size: bold;
+  font-size: 20px;
+  border: #222222 3px solid
+}
+
+.sel-country:hover {
+  color: #222222;
+  font-size: bold;
+  font-size: 20px;
+  border: #222222 3px solid
+}
+
+
+
+
