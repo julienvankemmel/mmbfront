@@ -24,7 +24,11 @@
             </div>
           </div>
           <button type="submit" class="login btn btn-primary mt-5" [disabled]="!loginForm.valid">Submit</button>
+          <div class="error mt-2">{{error}}</div>
         </form>
       </div>
     </div>
+    <div class="text-center mt-5">
+    <a [routerLink] = "['/register']">Pas encore inscrit ?</a>
+  </div>
   </div>

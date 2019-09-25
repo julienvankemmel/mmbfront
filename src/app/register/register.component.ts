@@ -23,6 +23,8 @@ export class RegisterComponent implements OnInit {
   get confirmPassword() { return this.registerForm.get('confirmPassword'); }
 
   registerForm: FormGroup;
+  loading: boolean;
+  error: string;
 
   // validation des mots de passe
   pwdMatchValidator(frm: FormGroup) {
@@ -44,16 +46,22 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
 
-    // envoi du formulaire
-    this.loginService.register(this.registerForm.value)
-    .subscribe(data => console.log(data));
+    this.loading = true;
 
-    if (this.data.message) {
+    this.loginService.register(this.registerForm.value).subscribe(
 
-      return this.data.message;
-    }
-    // redirection
-    this.router.navigate(['']);
+      // traitement de la réponse HTTP, en cas d'erreur on affiche
+      // l'erreur dans la vue
+       users => {
+         console.log();
+         this.loading = false;
+       },
+       error => {
+         this.error = error;
+
+         this.loading = false;
+       }
+     );
       }
 
 }
