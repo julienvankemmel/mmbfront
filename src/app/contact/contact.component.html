@@ -28,21 +28,36 @@
         <div class="form-group">
           <label>Adresse e-mail</label>
           <input type="email" class="form-control" placeholder="name@backpacker.com" formControlName="email">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-2">
+            <div *ngIf="email.errors.required">
+              Ce champ est requis
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label>Objet</label>
           <input type="text" class="form-control" placeholder="Merci pour mon backpack !" formControlName="subject">
+          <div *ngIf="subject.invalid && (subject.dirty || subject.touched)" class="alert alert-danger mt-2">
+            <div *ngIf="subject.errors.required">
+              Ce champ est requis
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label>Message</label>
           <textarea class="form-control" rows="5" placeholder="Bonjour la team MMB, &#10;Merci pour votre super site !" formControlName="msg"></textarea>
+          <div *ngIf="msg.invalid && (msg.dirty || msg.touched)" class="alert alert-danger mt-2">
+            <div *ngIf="msg.errors.required">
+              Ce champ est requis
+            </div>
+          </div>
         </div>
         <div class="form-group">
-                <re-captcha (resolved)="resolved($event)"></re-captcha>
-          <button type="submit" class="btn bg-orange text-light" [disabled]="!mailForm.valid">Envoyer</button>
+                <re-captcha (resolved)="resolved($event)" formControlName="recaptchaReactive"></re-captcha>
+          <button type="submit" class="btn bg-orange text-light mt-2" [disabled]="!mailForm.valid">Envoyer</button>
         </div>
-
-      </form> 
+      </form>
+      <p id="success" class="text-success"></p>
     </div>
   </div>
 </div>
