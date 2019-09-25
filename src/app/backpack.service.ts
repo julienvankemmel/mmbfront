@@ -18,7 +18,7 @@ export class BackpackService {
   headerJwt = this.headerService.headerBuilder();
 
   getBackpack(): Observable<any[]> {
-    return this.http.get<any[]>('http://127.0.0.1:8000/api/backpack', this.headerJwt)
+    return this.http.get<any[]>('http://127.0.0.1:8000/backpack', this.headerJwt)
       .pipe(
         tap(data => data)
       );

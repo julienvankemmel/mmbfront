@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { LoginService } from '../login.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -8,18 +10,48 @@ import { LoginService } from '../login.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  data: any;
 
   constructor( private loginService: LoginService, private router: Router ) { }
 
-  ngOnInit() {
+  // récupération de la valeur des inputs
+
+  get username() { return this.registerForm.get('username'); }
+
+  get password() { return this.registerForm.get('password'); }
+
+  get confirmPassword() { return this.registerForm.get('confirmPassword'); }
+
+  registerForm: FormGroup;
+
+  // validation des mots de passe
+  pwdMatchValidator(frm: FormGroup) {
+    return frm.get('password').value === frm.get('confirmPassword').value ? null : {mismatch: true};
+ }
+
+  ngOnInit(): void {
+
+    // construction du formulaire
+    this.registerForm = new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', [
+        Validators.required,
+         Validators.minLength(6)
+        ]),
+        confirmPassword: new FormControl(''),
+    }, this.pwdMatchValidator);
   }
 
-  onSubmit(form) {
+  onSubmit() {
 
     // envoi du formulaire
-    this.loginService.register(form.form.value)
-    .subscribe(data => window.alert(data.message));
+    this.loginService.register(this.registerForm.value)
+    .subscribe(data => console.log(data));
 
+    if (this.data.message) {
+
+      return this.data.message;
+    }
     // redirection
     this.router.navigate(['']);
       }

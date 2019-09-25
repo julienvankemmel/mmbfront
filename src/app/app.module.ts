@@ -16,9 +16,8 @@ import { CategoryItemComponent } from './category-item/category-item.component';
 import { CommentComponent } from './comment/comment.component';
 import { CountryComponent } from './country/country.component';
 import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { NavComponent } from './nav/nav.component';
-
+import { ContactComponent } from './contact/contact.component';
+import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -36,17 +35,25 @@ import { NavComponent } from './nav/nav.component';
     CommentComponent,
     CountryComponent,
     RegisterComponent,
-    HomeComponent,
-    NavComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: { 
+        siteKey: '6Ld1HboUAAAAAK6CWhtppdO8tf4azAPdjMgu9Rra',
+      } as RecaptchaSettings,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
