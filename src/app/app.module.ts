@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -38,9 +39,10 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     CommentComponent,
     CountryComponent,
     RegisterComponent,
+    ContactComponent,
+    FooterComponent,
     HomeComponent,
     NavComponent,
-    ContactComponent
   ],
   imports: [
     BrowserModule,
