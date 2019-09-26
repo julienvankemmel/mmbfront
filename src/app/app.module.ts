@@ -17,17 +17,13 @@ import { CommentComponent } from './comment/comment.component';
 import { CountryComponent } from './country/country.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
-<<<<<<< HEAD
-import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilformComponent } from './profilform/profilform.component';
-=======
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FooterComponent } from './footer/footer.component';
->>>>>>> 6d5d33a172d82d4336f4a284de0fc9961995f88c
 
 @NgModule({
   declarations: [
@@ -46,13 +42,10 @@ import { FooterComponent } from './footer/footer.component';
     CountryComponent,
     RegisterComponent,
     ContactComponent,
-<<<<<<< HEAD
-    ProfilformComponent
-=======
+    ProfilformComponent,
     FooterComponent,
     HomeComponent,
     NavComponent,
->>>>>>> 6d5d33a172d82d4336f4a284de0fc9961995f88c
   ],
   imports: [
     BrowserModule,
