@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, tap, catchError } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { HeaderService } from './header.service';
 import {Router} from '@angular/router';
 
@@ -20,19 +20,10 @@ export class LoginService {
 
    }
 
-  err: any;
-
   /**
    * construction du header à envoyer avec la requête vers API
    */
     headerJwt = this.headerService.headerBuilder();
-
- /**
-  * Handle Http operation that failed.
-  * Let the app continue.
-  * @param operation - name of the operation that failed
-  * @param result - optional value to return as the observable result
-  */
 
    /**
     *
@@ -47,7 +38,8 @@ export class LoginService {
         // enregistrement du jwt dans le localStorage
         tap((data) => localStorage.setItem('jwt', data.token)),
 
-        catchError(this.handleLoginError<any>('login'))
+         catchError(this.handleLoginError)
+
       );
 
   }
@@ -62,7 +54,8 @@ export class LoginService {
     return this.http.post<any>(url, user, { responseType: 'json' })
       .pipe(
 
-        catchError(this.handleError<any>('login'))
+        catchError(this.handleRegisterError)
+
       );
 
   }
@@ -78,42 +71,34 @@ export class LoginService {
 
     }
 
-    // Gestion des messages d'erreurs serveur
-private handleError<T>(operation = 'operation', result?: T) {
-  return (error: any): Observable<T> => {
 
+/**
+ *
+ * @param error
+ * traitement des erreurs login
+ */
+handleLoginError(error) {
 
-    // TODO: send the error to remote logging infrastructure
-    // console.error(error); // log to console instead
-     // window.alert(error.error.violations[0].title);
+  let errorMessage = '';
 
-    // TODO: better job of transforming error for user consumption
-    // console.log(`${operation} failed: ${error.message}`);
+  errorMessage = error.error.message;
 
-
-
-    // Let the app keep running by returning an empty result.
-     return (error);
-  };
+  return throwError(errorMessage);
 }
 
+/**
+ *
+ * @param error
+ * traitement des erreurs register
+ */
+handleRegisterError(error) {
 
-// erreur de login
-private handleLoginError<T>(operation = 'operation', result?: T) {
-  return (error: any): Observable<T> => {
+  let errorMessage = '';
 
+  errorMessage = error.error.violations[0].title;
 
-    // TODO: send the error to remote logging infrastructure
-    // console.error(error); // log to console instead
-     window.alert(error.error.message);
-
-    // TODO: better job of transforming error for user consumption
-    // console.log(`${operation} failed: ${error.message}`);
-
-
-
-    // Let the app keep running by returning an empty result.
-     return (error);
-  };
+  return throwError(errorMessage);
 }
+
 }
+

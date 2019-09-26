@@ -1,0 +1,54 @@
+<div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-6">
+            <h1 class="text-center mt-5">Mon profil</h1>
+            <form class="mt-5" [formGroup]="profilForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="firstName">Prénom</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Choisissez un pseudo"
+                  formControlName="firstName">
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger mt-2">
+                  <div *ngIf="firstName.errors.required">
+                    Ce champ est requis
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Nom</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Choisissez un mot de passe"
+                  formControlName="lastName">
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger mt-2">
+                  <div *ngIf="lastName.errors.required">
+                    Ce champ est requis
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="dateOfBirth">Date de naissance</label>
+                <input type="date" class="form-control" id="dateOfBirth" placeholder="Confirmez un mot de passe"
+                  formControlName="dateOfBirth">
+                  <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)" class="alert alert-danger mt-2">
+                        <div *ngIf="dateOfBirth.errors.required">
+                          Ce champ est requis
+                        </div>
+                      </div>
+                </div>
+                <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Confirmez un mot de passe"
+                          formControlName="email">
+                          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-2">
+                                <div *ngIf="email.errors.required">
+                                  Ce champ est requis
+                                </div>
+                              </div>
+                        </div>
+              <button type="submit" class="register btn btn-primary mt-5" [disabled]="!registerForm.valid">Submit</button>
+              <div class="error mt-2">{{error}}</div>
+            </form>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+            <a [routerLink] = "['/login']">Retour à la connexion</a>
+          </div>
+      </div>

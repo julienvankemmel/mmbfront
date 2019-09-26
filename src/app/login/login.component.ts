@@ -12,6 +12,8 @@ import { Validators } from '@angular/forms';
 
 export class LoginComponent implements OnInit {
 
+  data;
+
   constructor( private loginService: LoginService, private router: Router ) { }
 
   // récupération de la valeur des inputs
@@ -21,6 +23,8 @@ export class LoginComponent implements OnInit {
   get password() { return this.loginForm.get('password'); }
 
   loginForm: FormGroup;
+  loading: boolean;
+  error: string;
 
   ngOnInit() {
 
@@ -37,13 +41,29 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
 
-    // envoi du formulaire
-    this.loginService.login(this.loginForm.value)
-    .subscribe(data => console.log(data.message));
+     this.loading = true;
+
+     this.loginService.login(this.loginForm.value).subscribe(
+
+      // traitement de la réponse HTTP, en cas d'erreur on affiche
+      // l'erreur dans la vue
+        users => {
+          console.log('you\'re logged !');
+          this.loading = false;
+        },
+        error => {
+          this.error = error;
+
+          this.loading = false;
+        }
+      );
 
     // redirection
     // this.router.navigate(['backpack']);
       }
 
 
-}
+    }
+
+
+

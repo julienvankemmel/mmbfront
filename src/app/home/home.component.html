@@ -1,23 +1,19 @@
-<section id="slider" class="slider-element full-screen">
-	<div class="full-screen dark section nopadding nomargin noborder ohidden">
-		<div id="myVideo" class="embed-responsive embed-responsive-16by9">
-            <video poster="images/videos/explore.jpg" preload="auto" loop autoplay muted>
-                <source src="{{ 'assets/video/back_video.mp4' }}" type='video/mp4' />
-			</video>
-		</div>
-		<form class="content" action="">
-			<div class="form-group row">
-				<div class="col"></div>
-				<div class="col text-center">
-					<label class="lab-country" for="exampleSelect1">CHOISISSEZ VOTRE DESTINATION</label>
-					<select class="text-center sel-country" id="exampleSelect1">
-						<option class="rb">FRANCE</option>
-						<option class="rb">ITALIE</option>
-						<option class="rb">ESPAGNE</option>
-					</select>
-				</div>
-				<div class="col"></div>
-			</div>
-		</form>
-	</div>
-</section>
+<header>
+  <div class="overlay">
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+      <source src="assets/video/back_video.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="container h-100">
+    <div class="d-flex text-center h-100">
+      <div class="my-auto mx-auto w-100 text-light display-4">
+        <h1>Voyagez léger<br>votre backpack est déjà fait</h1>
+        <div class="mx-auto input-group w-40">
+          <input class="form-control text-center selector my-auto" id="exampleSelect1" placeholder="France">
+          <span class="input-group-addon"><i class="fa fa-search text-orange my-auto"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
