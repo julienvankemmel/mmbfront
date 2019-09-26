@@ -3,5 +3,15 @@
     max-width: 40px;
 }
 .pad{
-    padding:30px 0px 30px 40px;
+    padding:30px;
+}
+.footer-list{
+    list-style: none;
+    text-align: right;
+}
+ul>li>a{
+    color:#222;
+}
+ul>li>a:hover{
+    color:#ff6600;
 }
