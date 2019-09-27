@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {
+  get search() { return this.searchForm.get('search'); }
+
+  searchForm: FormGroup;
+
+  ngOnInit(): void {
+
+    this.searchForm = new FormGroup({
+      search: new FormControl(),
+    })
+  };
+
+  onSubmit(searchForm) {
+    this.router.navigate(['/backpack/'+this.searchForm.value.search])
   }
 
 }
