@@ -85,7 +85,7 @@ private handleError<T>(operation = 'operation', result?: T) {
 
     // TODO: send the error to remote logging infrastructure
     // console.error(error); // log to console instead
-     // window.alert(error.error.violations[0].title);
+      window.alert(error.error.violations[0].title);
 
     // TODO: better job of transforming error for user consumption
     // console.log(`${operation} failed: ${error.message}`);
@@ -93,7 +93,7 @@ private handleError<T>(operation = 'operation', result?: T) {
 
 
     // Let the app keep running by returning an empty result.
-     return (error);
+      return (error);
   };
 }
 
