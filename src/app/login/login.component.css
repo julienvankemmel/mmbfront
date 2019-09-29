@@ -3,3 +3,8 @@
     background-color: #FF6600 !important;
     border: none;
 }
+
+a {
+    color: #FF6600 !important;
+    text-decoration: none;
+}

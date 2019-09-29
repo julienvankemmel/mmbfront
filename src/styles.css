@@ -1,3 +1,21 @@
+/* Background Perso */
+
+.bg-rb {
+    background-color: #222222;
+  }
+
+
+/* Couleur perso*/
+
+.bo {
+    color: #ff6600 !important;
+}
+
+.rb {
+  color: #222222;
+}
+
+
 .bg-lightgrey{
     background-color: #F9F9F9;
 }
@@ -6,4 +24,7 @@
 }
 .bg-orange{
     background-color: #ff6600;
+}
+.text-orange{
+  color: #ff6600;
 }

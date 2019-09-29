@@ -16,7 +16,7 @@ export class MailService {
     * méthode register utilisateur
     */
    sendEmail(email: any): Observable<any> {
-    const url = 'http://127.0.0.1:8000/apiuser/register';
+    const url = 'http://127.0.0.1:8000/mail';
     return this.http.post<any>(url, email, { responseType: 'json' })
       .pipe(
 

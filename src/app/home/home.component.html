@@ -1,0 +1,19 @@
+<header>
+  <div class="overlay">
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+      <source src="assets/video/back_video.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="container h-100">
+    <div class="d-flex text-center h-100">
+      <div class="my-auto mx-auto w-100 text-light display-4">
+        <h1>Voyagez léger<br>votre backpack est déjà fait</h1>
+          <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="mx-auto input-group w-40">
+              <input class="form-control text-center selector my-auto" id="exampleSelect1" placeholder="France" formControlName="search">
+              <span class="input-group-addon bg-transparent"><i class="fa fa-search text-orange my-auto bg-transparent" type="submit"></i></span>
+          </form>
+      </div>
+    </div>
+  </div>
+
+</header>

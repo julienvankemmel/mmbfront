@@ -17,7 +17,13 @@ import { CommentComponent } from './comment/comment.component';
 import { CountryComponent } from './country/country.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
-import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfilformComponent } from './profilform/profilform.component';
+import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
+import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -35,15 +41,22 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recap
     CommentComponent,
     CountryComponent,
     RegisterComponent,
-    ContactComponent
+    ContactComponent,
+    ProfilformComponent,
+    FooterComponent,
+    HomeComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     RecaptchaModule,
-    AppRoutingModule
+    RecaptchaFormsModule,
+    AppRoutingModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     {

@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container mb-5 mt-5">
   <div class="row">
     <div class="col-sm-6 p-5 my-auto">
-      <h1>Coucou c'est nous</h1>
+      <h1>Qui sommes-nous ?</h1>
       <div class="row mt-3">
           <div style="height:70px; width:70px; overflow: hidden;" class="rounded-circle ml-3">
               <img src="https://loremflickr.com/640/360" style="max-height:100%">
@@ -21,28 +21,43 @@
         <br><br>C'est en partageant nos expériences et en comparant le contenu de nos sac à dos que nous avons créé Make My Backpack, pour vous aider à partir au bout du monde les mieux préparés possible, sans prise de tête !
     </p>
     </div>
-    <div class="col-sm-6 p-5 bg-lightgrey text-raisin">
+    <div class="col-sm-6 p-5 mt-5 bg-lightgrey text-raisin">
         <h1>Contactez-nous !</h1>
       <form [formGroup]="mailForm" (ngSubmit)="onSubmit()">
 
         <div class="form-group">
           <label>Adresse e-mail</label>
           <input type="email" class="form-control" placeholder="name@backpacker.com" formControlName="email">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-2">
+            <div *ngIf="email.errors.required">
+              Ce champ est requis
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label>Objet</label>
           <input type="text" class="form-control" placeholder="Merci pour mon backpack !" formControlName="subject">
+          <div *ngIf="subject.invalid && (subject.dirty || subject.touched)" class="alert alert-danger mt-2">
+            <div *ngIf="subject.errors.required">
+              Ce champ est requis
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label>Message</label>
           <textarea class="form-control" rows="5" placeholder="Bonjour la team MMB, &#10;Merci pour votre super site !" formControlName="msg"></textarea>
+          <div *ngIf="msg.invalid && (msg.dirty || msg.touched)" class="alert alert-danger mt-2">
+            <div *ngIf="msg.errors.required">
+              Ce champ est requis
+            </div>
+          </div>
         </div>
         <div class="form-group">
-                <re-captcha (resolved)="resolved($event)"></re-captcha>
-          <button type="submit" class="btn bg-orange text-light" [disabled]="!mailForm.valid">Envoyer</button>
+                <re-captcha (resolved)="resolved($event)" formControlName="recaptchaReactive"></re-captcha>
+          <button type="submit" class="btn bg-orange text-light mt-2" [disabled]="!mailForm.valid">Envoyer</button>
         </div>
-
-      </form> 
+      </form>
+      <p id="success" class="text-success"></p>
     </div>
   </div>
 </div>
