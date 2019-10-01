@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import {Router} from '@angular/router';
 import { LoginService } from '../login.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import { Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   data;
+  @Input() user;
 
   constructor( private loginService: LoginService, private router: Router ) { }
 
@@ -36,8 +38,7 @@ export class LoginComponent implements OnInit {
           ]),
       });
 
-    // efface le jwt (pour test)
-      localStorage.removeItem('jwt');
+
   }
   onSubmit() {
 
@@ -50,6 +51,9 @@ export class LoginComponent implements OnInit {
         users => {
           console.log('you\'re logged !');
           this.loading = false;
+
+           // redirection
+          this.router.navigate(['']);
         },
         error => {
           this.error = error;
@@ -61,7 +65,6 @@ export class LoginComponent implements OnInit {
     // redirection
     // this.router.navigate(['backpack']);
       }
-
 
     }
 

@@ -5,14 +5,24 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
+import { ProfilformComponent } from './profilform/profilform.component';
+import { AuthGuard } from './auth.guard';
+import { RedirectionComponent } from './redirection/redirection.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
 
   {path: '', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent,  data: {animation: 'login'}},
   {path: 'backpack/:country', component: BackpackComponent},
   {path: 'register', component: RegisterComponent,  data: {animation: 'register'}},
   {path: 'contact', component: ContactComponent},
+  {path: 'redirection', component: RedirectionComponent},
+  /**
+   * les pages "profile" sont protégées par authguard
+   */
+  {path: 'profileform/:id', component: ProfilformComponent, canActivate: [AuthGuard], data: {animation: 'profileform'}},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: {animation: 'profile'}}
 ];
 
 @NgModule({

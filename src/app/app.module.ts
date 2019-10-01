@@ -22,8 +22,11 @@ import { ProfilformComponent } from './profilform/profilform.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+// import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FooterComponent } from './footer/footer.component';
+import { AuthGuard } from './auth.guard';
+import { RedirectionComponent } from './redirection/redirection.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,8 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
     HomeComponent,
     NavComponent,
+    RedirectionComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,12 +61,12 @@ import { FooterComponent } from './footer/footer.component';
     RecaptchaModule,
     RecaptchaFormsModule,
     AppRoutingModule,
-    AngularFontAwesomeModule
+    // AngularFontAwesomeModule
   ],
-  providers: [
+  providers: [AuthGuard,
     {
       provide: RECAPTCHA_SETTINGS,
-      useValue: { 
+      useValue: {
         siteKey: '6Ld1HboUAAAAAK6CWhtppdO8tf4azAPdjMgu9Rra',
       } as RecaptchaSettings,
     },
