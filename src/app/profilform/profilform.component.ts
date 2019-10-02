@@ -42,7 +42,7 @@ this.route.params.subscribe( params => this.id = params.id);
   user: any;
   id: any;
 
-  private imageSrc: string = '';
+  private imageSrc = '';
 
   ngOnInit() {
 
@@ -83,7 +83,7 @@ this.route.params.subscribe( params => this.id = params.id);
     console.log(this.imageSrc);
     this.profileForm.get('avatar').setValue(this.imageSrc);
   }
-  
+
 
   onSubmit() {
 

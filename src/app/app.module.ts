@@ -21,12 +21,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfilformComponent } from './profilform/profilform.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FooterComponent } from './footer/footer.component';
-//import { AuthGuard } from './auth.guard';
-//import { RedirectionComponent } from './redirection/redirection.component';
-//import { ProfileComponent } from './profile/profile.component';
+// import { AuthGuard } from './auth.guard';
+// import { RedirectionComponent } from './redirection/redirection.component';
+// import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -49,8 +50,9 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
     HomeComponent,
     NavComponent,
-    //RedirectionComponent,
-    //ProfileComponent,
+    DashboardComponent
+    /*RedirectionComponent,
+    ProfileComponent,*/
   ],
   imports: [
     BrowserModule,
@@ -63,8 +65,7 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     // AngularFontAwesomeModule
   ],
-  providers: [
-    //AuthGuard,
+  providers: [/*AuthGuard*/,
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
