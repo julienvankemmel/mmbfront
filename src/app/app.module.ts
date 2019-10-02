@@ -24,9 +24,15 @@ import { NavComponent } from './nav/nav.component';
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FooterComponent } from './footer/footer.component';
+<<<<<<< HEAD
 // import { AuthGuard } from './auth.guard';
 // import { RedirectionComponent } from './redirection/redirection.component';
 // import { ProfileComponent } from './profile/profile.component';
+=======
+//import { AuthGuard } from './auth.guard';
+//import { RedirectionComponent } from './redirection/redirection.component';
+//import { ProfileComponent } from './profile/profile.component';
+>>>>>>> 2ef68be47c28e92da34b14c6b72a5b6bb9902d37
 
 @NgModule({
   declarations: [
@@ -49,8 +55,13 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
     HomeComponent,
     NavComponent,
+<<<<<<< HEAD
     /*RedirectionComponent,
     ProfileComponent,*/
+=======
+    //RedirectionComponent,
+    //ProfileComponent,
+>>>>>>> 2ef68be47c28e92da34b14c6b72a5b6bb9902d37
   ],
   imports: [
     BrowserModule,
@@ -63,7 +74,12 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     // AngularFontAwesomeModule
   ],
+<<<<<<< HEAD
   providers: [/*AuthGuard*/,
+=======
+  providers: [
+    //AuthGuard,
+>>>>>>> 2ef68be47c28e92da34b14c6b72a5b6bb9902d37
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
