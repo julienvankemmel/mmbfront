@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProfilformComponent } from './profilform/profilform.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 // import { AuthGuard } from './auth.guard';
 // import { RedirectionComponent } from './redirection/redirection.component';
 // import { ProfileComponent } from './profile/profile.component';
@@ -21,8 +22,8 @@ const routes: Routes = [
   /**
    * les pages "profile" sont protégées par authguard
    */
-  {path: 'profileform/:id', component: ProfilformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'profileform'}},
-  // {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: {animation: 'profile'}}
+  {path: 'profileform', component: ProfilformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'profileform'}},
+  {path: 'dashboard', component: DashboardComponent,/* canActivate: [AuthGuard],*/ data: {animation: 'profile'}}
 ];
 
 @NgModule({
