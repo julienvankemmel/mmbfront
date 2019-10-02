@@ -11,6 +11,7 @@ import { Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   data: any;
+  user: any;
 
   constructor( private loginService: LoginService, private router: Router ) { }
 
@@ -52,8 +53,8 @@ export class RegisterComponent implements OnInit {
 
       // traitement de la réponse HTTP, en cas d'erreur on affiche
       // l'erreur dans la vue
-       users => {
-         console.log();
+       user => {
+         this.user = user;
          this.loading = false;
        },
        error => {
