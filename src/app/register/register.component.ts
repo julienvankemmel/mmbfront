@@ -41,6 +41,8 @@ export class RegisterComponent implements OnInit {
         Validators.required,
          Validators.minLength(6)
         ]),
+        // le validator de confirmPassword est la fonction pwdMAtchValidator
+        // ligne 31
         confirmPassword: new FormControl(''),
     }, this.pwdMatchValidator);
   }

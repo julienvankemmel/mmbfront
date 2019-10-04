@@ -45,7 +45,7 @@ export class UserService {
         responseType: 'json'
       })
       .pipe(
-        tap(data => console.log(data)),
+        tap(data => data),
 
         catchError(this.handleUpdateUserError),
 
@@ -70,7 +70,7 @@ export class UserService {
   /**
    * 
    * @param user
-   * méthode pour insérer un employé 
+   * méthode pour insérer un employé
    */
   addUser(user): Observable < any > {
     const url = 'http://127.0.0.1:8000/api/users/';

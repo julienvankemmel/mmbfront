@@ -7,7 +7,10 @@ import { Router } from '@angular/router';
 
 /**
  * Ce service gère :
+ * l'inscription utilisateur
  * le login de l'utilisateur
+ * la gestion de la variable loggedIn
+ * qui représente la connexion utilisateur (pour auth guard)
  * la récupération des datas de l'utilisateur
  */
 
@@ -23,7 +26,7 @@ export class LoginService {
   data: any;
 
   /**
-   * on crée une variable loggedIn qui vavérifier que l'utilisateur est
+   * on crée une variable loggedIn qui va vérifier que l'utilisateur est
    * connecté
    */
   private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());

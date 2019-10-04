@@ -36,6 +36,7 @@ this.route.params.subscribe( params => this.id = params.id);
 
   get avatar() { return this.profileForm.get('avatar') ; }
 
+
   profileForm: FormGroup;
   loading: boolean;
   error: string;
@@ -50,11 +51,11 @@ this.route.params.subscribe( params => this.id = params.id);
      * affichage des datas de l'utilisateur (pour test)
      */
     this.user = this.loginService.getUserData()
-    /*
+
     .subscribe(data => {
       this.user = data.user;
     });
-    */
+
 
       // construction du formulaire
     this.profileForm = new FormGroup({
@@ -66,6 +67,8 @@ this.route.params.subscribe( params => this.id = params.id);
       });
   }
 
+
+  // conversion de l'image en base64
   onFileSelect(e) {
     const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     const pattern = /image-*/;
@@ -80,30 +83,20 @@ this.route.params.subscribe( params => this.id = params.id);
   _handleReaderLoaded(e) {
     const reader = e.target;
     this.imageSrc = reader.result;
-    console.log(this.imageSrc);
     this.profileForm.get('avatar').setValue(this.imageSrc);
   }
 
 
   onSubmit() {
 
-   /* const uploadData = new FormData();
-
-    uploadData.append('firstName', this.firstName.value);
-    uploadData.append('lastName', this.lastName.value);
-    uploadData.append('dateOfBirth', this.dateOfBirth.value);
-    uploadData.append('email', this.email.value);
-    uploadData.append('avatar', this.selectedFile);*/
-
     this.userService.putUser(this.profileForm.value, this.id).subscribe(
 
      // traitement de la réponse HTTP, en cas d'erreur on affiche
      // l'erreur dans la vue
        users => {
-         console.log(this.profileForm.value);
+         console.log(users);
+         this.user = users;
 
-          // redirection
-        //  this.router.navigate(['']);
        },
        error => {
          this.error = error;

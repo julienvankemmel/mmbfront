@@ -7,7 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProfilformComponent } from './profilform/profilform.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-// import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './auth.guard';
+import { CountryComponent } from './country/country.component';
 
 const routes: Routes = [
 
@@ -16,12 +17,13 @@ const routes: Routes = [
   {path: 'backpack/:country', component: BackpackComponent},
   {path: 'register', component: RegisterComponent,  data: {animation: 'register'}},
   {path: 'contact', component: ContactComponent},
+  {path: 'country/:name/:id', component: CountryComponent},
 
   /**
-   * les pages "profile" sont protégées par authguard
+   * ces pages sont protégées par authguard
    */
-  {path: 'profileform/:id', component: ProfilformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'profileform'}},
-  {path: 'dashboard', component: DashboardComponent,/* canActivate: [AuthGuard],*/ data: {animation: 'profile'}}
+  {path: 'profileform/:id', component: ProfilformComponent, canActivate: [AuthGuard], data: {animation: 'profileform'}},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {animation: 'profile'}}
 ];
 
 @NgModule({

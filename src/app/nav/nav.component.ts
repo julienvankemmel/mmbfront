@@ -11,6 +11,11 @@ import { Observable } from 'rxjs';
 export class NavComponent implements OnInit {
 
   /**
+   * on va vérifier l'état de la variable isLoggedIn
+   * de loginService pour modifier la navbar en fonction de son état
+   */
+
+  /**
    * on déclare la variable isLoggedIn
    */
   isLoggedIn$: Observable<boolean>;

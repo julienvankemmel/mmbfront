@@ -1,1 +1,33 @@
-<p>country works!</p>
+ <div class="container">
+   <div class="row mb-5">
+     <!-- div pour afficher les données -->
+     
+     <div class="col-md-8 mt-5 mb-5">
+        <br><br><br><br><br>
+       <!-- affichage du drapeau -->
+       <img width="100px" src="{{resultat.flag}}" alt=""><br>
+       <h3>Capitale : {{resultat.capital}}</h3> <br>
+       <p><strong>Population : </strong></p>
+       <p>{{resultat.population}} habitants</p>
+       <!-- la langue est dans un nested array, il faut donc itérer l'array languages dans l'array result-->
+       <p><strong>Langage(s)</strong> : </p>
+       <p *ngFor="let language of resultat.languages">
+         -{{language.name}}
+       </p>
+       <!-- la monnaie est dans un nested array, il faut donc itérer l'array currencies dans l'array result-->
+       <p><strong>Monnaie(s) : </strong></p>
+       <p *ngFor="let money of resultat.currencies">
+         -{{money.name}} ({{money.symbol}})
+       </p>
+       <p><strong>Indicatif téléphonique : </strong>
+         <p>{{resultat.callingCodes}}</p>
+     </div>
+   </div>
+
+   <!--  à revoir j'ai la flemme :-D -->
+   <h1>{{country.name}}</h1>
+   <ul class="list-group mt-2" *ngFor="let item of country.backpacks[0].backpackitem">
+      <h3>Catégories : {{item.categoryItem.name}}</h3>
+      <li class="list-group-item">{{item.name}}</li>
+    </ul>
+ </div>

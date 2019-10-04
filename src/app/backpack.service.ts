@@ -26,7 +26,7 @@ export class BackpackService {
 
 
   getBackpackById(id): Observable<any> {
-    return this.http.get<any>('http://127.0.0.1:8000/api/backpacks/' + id)
+    return this.http.get<any>('http://127.0.0.1:8000/backpack/' + id)
       .pipe(
         tap(data => data)
       );
@@ -39,7 +39,7 @@ export class BackpackService {
  * méthode pour mettre un employé par son ID
  */
   putBackpack(backpack, id): Observable<any> {
-    const url = 'http://127.0.0.1:8000/api/backpacks/' + id;
+    const url = 'http://127.0.0.1:8000/backpack/' + id;
     console.log(url);
     return this.http.put<any>(url, backpack, { responseType: 'json' })
       .pipe(

@@ -61,9 +61,6 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         }
       );
-
-    // redirection
-    // this.router.navigate(['backpack']);
       }
 
     }
