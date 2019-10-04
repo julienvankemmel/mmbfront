@@ -23,7 +23,6 @@ this.route.params.subscribe( params => this.id = params.id);
 
   }
 
-
   // récupération de la valeur des inputs
 
   get firstName() { return this.profileForm.get('firstName'); }
@@ -52,7 +51,7 @@ this.route.params.subscribe( params => this.id = params.id);
      */
     this.user = this.loginService.getUserData()
     .subscribe(data => {
-      this.user = data;
+      this.user = data.user;
     });
 
       // construction du formulaire

@@ -29,7 +29,7 @@ user: any;
      */
     this.user = this.loginService.getUserData()
     .subscribe(data => {
-      this.user = data;
+      this.user = data.user;
       console.log(data);
     });
   }

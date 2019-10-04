@@ -49,7 +49,7 @@ export const slideInAnimation =
           ])
      ]),
 
-         transition('dashboard => profileform', [
+         transition('* => profileform', [
           query(':enter, :leave',
                style({ position: 'fixed', width: '100%' }),
                { optional: true }),
@@ -67,7 +67,7 @@ export const slideInAnimation =
           ])
      ]),
 
-     transition('profileform => dashboard', [
+     transition('profileform => *', [
           query(':enter, :leave',
                style({ position: 'fixed', width: '100%' }),
                { optional: true }),

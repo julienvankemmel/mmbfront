@@ -37,6 +37,7 @@ selectChangeHandler(event: any) {
    */
   this.selectedPays = event.target.value;
   this.router.navigate(['/country/' + this.selectedPays]);
+  console.log(this.selectedPays);
 
 }
 
