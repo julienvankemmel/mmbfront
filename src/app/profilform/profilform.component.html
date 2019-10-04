@@ -1,70 +1,79 @@
 <div class="container">
   <div class="row d-flex justify-content-center mt-5">
     <div class="col-md-6">
-      <h1 class="text-center mt-5">Mon profil</h1>
+      <<<<<<< HEAD <h1 class="text-center mt-5">Mon profil</h1>
 
-      <!--              debut formulaire               -->
-      <form class="mt-5" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="firstName">Prénom</label>
-          <input type="text" class="form-control" id="firstName" placeholder="John" value="{{user.firstName}}"
-            formControlName="firstName">
-          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger mt-2">
-            <div *ngIf="firstName.errors.required">
-              Ce champ est requis
-            </div>
+        <!--              debut formulaire               -->
+        <form class="mt-5" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="firstName">Prénom</label>
+            <input type="text" class="form-control" id="firstName" placeholder="John"
+              value="{{user.firstName}}"=======<h1 class="text-center mt-5 text-raisin">MODIFIER PROFIL</h1>
+            <form class="mt-5" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="firstName" class="text-raisin">Prénom</label>
+                <input type="text" class="form-control" id="firstName" placeholder="John"
+                  value="{{user.user.firstName}}">>>>>>> 6e80c20b3d127c4afb9cb1ae3cbdad87d85e4a3d
+                formControlName="firstName">
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                  class="alert alert-danger mt-2">
+                  <div *ngIf="firstName.errors.required">
+                    Ce champ est requis
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <<<<<<< HEAD <label for="lastName">Nom</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="Doe"
+                    value="{{user.lastName}}"=======<label for="lastName" class="text-raisin">Nom</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="Doe"
+                    value="{{user.user.lastName}}">>>>>>> 6e80c20b3d127c4afb9cb1ae3cbdad87d85e4a3d
+                  formControlName="lastName">
+                  <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger mt-2">
+                    <div *ngIf="lastName.errors.required">
+                      Ce champ est requis
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="dateOfBirth">Date de naissance</label>
+                <input type="date" class="form-control" id="dateOfBirth" placeholder="Confirmez un mot de passe"
+                  value="{{user.dateOfBirth | date: 'yyyy-MM-dd'}}" formControlName="dateOfBirth">
+                <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)"
+                  class="alert alert-danger mt-2">
+                  <div *ngIf="dateOfBirth.errors.required">
+                    Ce champ est requis
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="backpack@exemple.com"
+                  value="{{user.email}}" formControlName="email">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-2">
+                  <div *ngIf="email.errors.required">
+                    Ce champ est requis
+                  </div>
+                </div>
+              </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="lastName">Nom</label>
-          <input type="text" class="form-control" id="lastName" placeholder="Doe" value="{{user.lastName}}"
-            formControlName="lastName">
-          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger mt-2">
-            <div *ngIf="lastName.errors.required">
-              Ce champ est requis
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="dateOfBirth">Date de naissance</label>
-          <input type="date" class="form-control" id="dateOfBirth" placeholder="Confirmez un mot de passe"
-            value="{{user.dateOfBirth | date: 'yyyy-MM-dd'}}" formControlName="dateOfBirth">
-          <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)"
-            class="alert alert-danger mt-2">
-            <div *ngIf="dateOfBirth.errors.required">
-              Ce champ est requis
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="backpack@exemple.com" value="{{user.email}}"
-            formControlName="email">
-          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-2">
-            <div *ngIf="email.errors.required">
-              Ce champ est requis
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-          </div>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
-              (change)="onFileSelect($event)">
-            <label class="custom-file-label" for="inputGroupFile01">Choisir une image</label>
-          </div>
-        </div>
-        <button type="submit" class="register btn btn-primary mt-5" [disabled]="!profileForm.valid">Submit</button>
-        <div class="error mt-2">{{error}}</div>
-        <a class="nav-link" routerLink='../../dashboard'>retour PROFIL</a>
-      </form>
-      <!--              fin formulaire               -->
-
-      <!-- alerte maj profil-->
-      <p class="alert mt-2" *ngIf="user">{{user.message}}</p>
-      <!-- fin alerte maj profil -->
     </div>
   </div>
+  <br>
+  <div class="input-group mb-3">
+    <div class="custom-file">
+      <input type="file" class="custom-file-input toto" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+        (change)="onFileSelect($event)">
+      <label class="custom-file-label" for="inputGroupFile01">Choisir une image</label>
+    </div>
+  </div>
+  <button type="submit" class="register btn mt-5" [disabled]="!profileForm.valid">Confirmer</button>
+  <div class="error mt-2">{{error}}</div>
+  </form>
+  <!-- alerte maj profil-->
+  <p class="alert mt-2" *ngIf="user">{{user.message}}</p>
+  <!-- fin alerte maj profil -->
+</div>
+</div>
+<a class="nav-link text-right" routerLink='../../dashboard'><i class="fa fa-angle-up text-orange"></i></a>
 </div>

@@ -51,11 +51,9 @@ this.route.params.subscribe( params => this.id = params.id);
      * affichage des datas de l'utilisateur (pour test)
      */
     this.user = this.loginService.getUserData()
-
     .subscribe(data => {
-      this.user = data.user;
+      this.user = data;
     });
-
 
       // construction du formulaire
     this.profileForm = new FormGroup({
