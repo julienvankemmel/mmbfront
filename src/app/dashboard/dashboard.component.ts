@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   constructor(private loginService: LoginService, private userService: UserService,
               private route: ActivatedRoute) {
@@ -16,11 +16,12 @@ export class DashboardComponent implements OnInit {
     /**
      * ActivatedRoute permet de récuperer l'ID
      */
-this.route.params.subscribe( params => this.id = params.id);
-               }
+    this.route.params.subscribe(params => this.id = params.id);
 
-id: any;
-user: any;
+  }
+
+  id: any;
+  user: any;
 
   ngOnInit() {
 
@@ -28,10 +29,13 @@ user: any;
      * affichage des datas de l'utilisateur (pour test)
      */
     this.user = this.loginService.getUserData()
-    .subscribe(data => {
-      this.user = data.user;
-      console.log(data);
-    });
+      .subscribe(data => {
+        this.user = data.user;
+        console.log(data);
+      });
   }
+  ngOnDestroy() {
 
+    // this.user.unsubscribe();
+  }
 }
