@@ -12,7 +12,7 @@ import { CountryComponent } from './country/country.component';
 
 const routes: Routes = [
 
-  {path: '', component: HomeComponent},
+  {path: '', component: HomeComponent,  data: {animation: ''}},
   {path: 'login', component: LoginComponent,  data: {animation: 'login'}},
   {path: 'backpack/:country', component: BackpackComponent},
   {path: 'register', component: RegisterComponent,  data: {animation: 'register'}},

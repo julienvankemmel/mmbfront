@@ -26,6 +26,8 @@ import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSet
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FooterComponent } from './footer/footer.component';
 import { AuthGuard } from './auth.guard';
+// import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { AuthGuard } from './auth.guard';
     RecaptchaModule,
     RecaptchaFormsModule,
     AppRoutingModule,
+    // Ng2SearchPipeModule
     // AngularFontAwesomeModule
+    FilterPipeModule
   ],
   providers: [AuthGuard,
     {

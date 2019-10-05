@@ -25,9 +25,14 @@
    </div>
 
    <!--  à revoir j'ai la flemme :-D -->
+   <div *ngIf='country.backpacks !=0; else nobp'>
    <h1>{{country.name}}</h1>
-   <ul class="list-group mt-2" *ngFor="let item of country.backpacks[0].backpackitem">
+   <div *ngFor="let backpack of country.backpacks">
+   <ul class="list-group mt-2" *ngFor="let item of backpack.backpackitem">
       <h3>Catégories : {{item.categoryItem.name}}</h3>
       <li class="list-group-item">{{item.name}}</li>
     </ul>
+  </div>
+    </div>
+    <ng-template #nobp>Pas encore de backpack our cette destination !</ng-template>
  </div>

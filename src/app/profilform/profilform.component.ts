@@ -54,6 +54,7 @@ this.route.params.subscribe( params => this.id = params.id);
       this.user = data.user;
     });
 
+
       // construction du formulaire
     this.profileForm = new FormGroup({
         firstName: new FormControl('', Validators.minLength(2)),
@@ -63,7 +64,6 @@ this.route.params.subscribe( params => this.id = params.id);
         avatar: new FormControl('', )
       });
   }
-
 
   // conversion de l'image en base64
   onFileSelect(e) {
@@ -93,7 +93,6 @@ this.route.params.subscribe( params => this.id = params.id);
        users => {
          console.log(users);
          this.user = users;
-
        },
        error => {
          this.error = error;

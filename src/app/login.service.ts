@@ -104,7 +104,14 @@ export class LoginService {
    * affichage liste utilisateurs (pour test)
    */
   getUserData(): Observable<any[]> {
-    return this.http.get<any[]>('http://127.0.0.1:8000/api/userdata', this.headerJwt);
+    return this.http.get<any[]>('http://127.0.0.1:8000/api/userdata', this.headerJwt)
+    .pipe(
+
+      tap((data) => data),
+
+        catchError(this.handleDeconnectionError)
+
+      );;
 
   }
 
@@ -135,6 +142,23 @@ export class LoginService {
     errorMessage = error.error.violations[0].title;
 
     return throwError(errorMessage);
+  }
+
+  /**
+   *
+   * @param error
+   * traitement des erreurs deconnexion
+   * si l'utilisateur est deconnecté, jwt expiré,
+   * une erreur 401 est renvoyée, on se basera
+   * sur cela pour gérer la deconnexion
+   */
+  handleDeconnectionError(error) {
+
+    let errorStatus = '';
+
+    errorStatus = error.error.status;
+
+    return throwError(errorStatus);
   }
 
 }
