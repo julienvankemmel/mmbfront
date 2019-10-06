@@ -48,8 +48,8 @@ export class LoginComponent implements OnInit {
 
       // traitement de la réponse HTTP, en cas d'erreur on affiche
       // l'erreur dans la vue
-        users => {
-          console.log('you\'re logged !');
+        user => {
+          console.log(user);
           this.loading = false;
 
            // redirection
@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.error = error;
+          console.log(error);
 
           this.loading = false;
         }

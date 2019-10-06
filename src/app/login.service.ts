@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, tap, catchError } from 'rxjs/operators';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { HeaderService } from './header.service';
@@ -24,6 +24,7 @@ export class LoginService {
 
   }
   data: any;
+  user: any;
 
   /**
    * on crée une variable loggedIn qui va vérifier que l'utilisateur est
@@ -67,6 +68,7 @@ export class LoginService {
              */
             localStorage.setItem('jwt', data.token);
             this.loggedIn.next(true);
+
           }
         }),
 
@@ -107,11 +109,10 @@ export class LoginService {
     return this.http.get<any[]>('http://127.0.0.1:8000/api/userdata', this.headerJwt)
     .pipe(
 
-      tap((data) => data),
+          catchError(this.handleDeconnectionError),
 
-        catchError(this.handleDeconnectionError)
+      );
 
-      );;
 
   }
 
@@ -154,11 +155,12 @@ export class LoginService {
    */
   handleDeconnectionError(error) {
 
-    let errorStatus = '';
+    let errorStatus: number;
 
-    errorStatus = error.error.status;
-
+    errorStatus = error.error.code;
+    console.log(errorStatus);
     return throwError(errorStatus);
+
   }
 
 }

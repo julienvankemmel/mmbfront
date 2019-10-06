@@ -45,18 +45,8 @@ selectChangeHandler(event: any) {
 
   ngOnInit() {
 
-    /**
-     * appel dans la db pour afficher la liste des pays
-     */
-    /*this.liste = this.countryService.getCountry()
-
-    .subscribe(data => {
-      this.liste = data.countries;
-      console.log(data.countries);
-    });*/
-   
     this.liste = [
-    {"id":190,"name":"Viêt Nam","alpha2":"vn","alpha3":"vnm"},  
+    {"id":0,"name":"","alpha2":"","alpha3":""},
     {"id":1,"name":"Afghanistan","alpha2":"af","alpha3":"afg"},
     {"id":2,"name":"Afrique du Sud","alpha2":"za","alpha3":"zaf"},
     {"id":3,"name":"Albanie","alpha2":"al","alpha3":"alb"},
@@ -246,6 +236,7 @@ selectChangeHandler(event: any) {
     {"id":187,"name":"Uruguay","alpha2":"uy","alpha3":"ury"},
     {"id":188,"name":"Vanuatu","alpha2":"vu","alpha3":"vut"},
     {"id":189,"name":"Venezuela","alpha2":"ve","alpha3":"ven"},
+    {"id":190,"name":"Viêt Nam","alpha2":"vn","alpha3":"vnm"},
     {"id":191,"name":"Yémen","alpha2":"ye","alpha3":"yem"},
     {"id":192,"name":"Zambie","alpha2":"zm","alpha3":"zmb"},
     {"id":193,"name":"Zimbabwe","alpha2":"zw","alpha3":"zwe"}

@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profilform',
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfilformComponent implements OnInit {
 
   constructor( private loginService: LoginService, private userService: UserService,
-               private route: ActivatedRoute ) {
+               private route: ActivatedRoute, private router: Router ) {
 
 
     /**
@@ -51,7 +51,19 @@ this.route.params.subscribe( params => this.id = params.id);
      */
     this.user = this.loginService.getUserData()
     .subscribe(data => {
-      this.user = data.user;
+      this.user = data['user'];
+    },
+    error => {
+      /**
+       * erreur 401 indique que le jwt est expiré
+       * on redirige vers le login
+       */
+      if (error === 401) {
+
+        localStorage.removeItem('jwt');
+        this.router.navigate(['login']);
+      }
+
     });
 
 
