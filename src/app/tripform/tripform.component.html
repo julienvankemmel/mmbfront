@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-md-6">
+      <h1 class="text-center mt-5 text-raisin">AJOUTER UN VOYAGE</h1>
+      <form class="mt-5" [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="" class="text-raisin">Nom du voyage</label>
+          <input type="text" class="form-control" id="name" placeholder="Mon voyage" value="{{user.trip.name}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Selectionner un pays</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option></option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="startDate" class="text-raisin">Date de départ</label>
+          <input type="date" class="form-control" id="startDate"
+            value="{{user.trip.startDate | date: 'yyyy-MM-dd'}}" formControlName="startDate">
+          <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)"
+            class="alert alert-danger mt-2">
+            <div *ngIf="startDate.errors.required">
+              Ce champ est requis
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="endDate" class="text-raisin">Date d'arrivée</label>
+          <input type="date" class="form-control" id="endDate" placeholder="Confirmez un mot de passe"
+            value="{{user.trip.endDate | date: 'yyyy-MM-dd'}}" formControlName="endDate">
+          <div *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)"
+            class="alert alert-danger mt-2">
+            <div *ngIf="endDate.errors.required">
+              Ce champ est requis
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="text-raisin">Description du voyage</label><br>
+            <textarea id="content" cols="72" rows="5" placeholder="" value="{{user.trip.content}}"></textarea>
+        </div>      
+        <div class="text-center">
+          <button type="submit" class="register btn mt-5" [disabled]="!tripForm.valid">Créer mon voyage</button>
+        </div>
+        <div class="error mt-2">{{error}}</div>
+      </form>
+    </div>
+  </div>
+  <a class="nav-link text-right" data-toggle="tooltip" data-placement="top" title="Retour au profil"
+    routerLink='../../dashboard'><i class="fa fa-angle-up text-orange"></i></a>
+</div>

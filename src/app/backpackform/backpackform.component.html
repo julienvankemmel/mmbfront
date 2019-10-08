@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-md-6">
+      <h1 class="text-center mt-5 text-raisin">AJOUTER UN BACKPACK</h1>
+      <form class="mt-5" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="" class="text-raisin">Nom du backpack</label>
+          <input type="text" class="form-control" id="" placeholder="" value="">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Selectionner un voyage</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option></option>
+          </select>
+          <small class="form-text text-muted">Si vous n'avez pas de voyage, pensez à en créer un avant votre
+            backpack.</small>
+        </div><br><br>
+        <div class="form-group">
+          <label for="" class="text-raisin">Ajouter un item</label>
+          <input type="text" class="form-control" id="" placeholder="" value="">
+        </div>
+        <div class="form-group">
+          <label for="" class="text-raisin">Catégorie de l'item</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+            <label class="form-check-label" for="exampleRadios1">
+              VÊTEMENT
+            </label>
+          </div>
+          <div class="custom-control custom-radio" class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+            <label class="form-check-label" for="exampleRadios1">
+              PAPIER
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+            <label class="form-check-label" for="exampleRadios1">
+              ACCESSOIR
+            </label>
+          </div>
+          <div class="text-right">
+            <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Ajouter un item" [routerLink]=""><i
+                class="fa fa-plus-circle text-orange"></i></a>
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="register btn mt-5" [disabled]="!profileForm.valid">Créer mon backpack</button>
+        </div>
+        <div class="error mt-2">{{error}}</div>
+      </form>
+    </div>
+  </div>
+  <a class="nav-link text-right" data-toggle="tooltip" data-placement="top" title="Retour au profil"
+    routerLink='../../dashboard'><i class="fa fa-angle-up text-orange"></i></a>
+</div>

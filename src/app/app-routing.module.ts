@@ -7,6 +7,10 @@ import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProfilformComponent } from './profilform/profilform.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BackpackpageComponent } from './backpackpage/backpackpage.component';
+import { BackpackformComponent } from './backpackform/backpackform.component';
+import { TrippageComponent } from './trippage/trippage.component';
+import { TripformComponent } from './tripform/tripform.component';
 // import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -20,8 +24,12 @@ const routes: Routes = [
   /**
    * les pages "profile" sont protégées par authguard
    */
+  {path: 'dashboard', component: DashboardComponent,/* canActivate: [AuthGuard],*/ data: {animation: 'profile'}},
   {path: 'profileform/:id', component: ProfilformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'profileform'}},
-  {path: 'dashboard', component: DashboardComponent,/* canActivate: [AuthGuard],*/ data: {animation: 'profile'}}
+  {path: 'backpackpage/:id', component: BackpackpageComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'backpackpage'}},
+  {path: 'backpackform/:id', component: BackpackformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'backpackform'}},
+  {path: 'trippage/:id', component: TrippageComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'trippage'}},
+  {path: 'tripform/:id', component: TripformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'tripform'}},
 ];
 
 @NgModule({

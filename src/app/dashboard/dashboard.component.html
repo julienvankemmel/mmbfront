@@ -8,11 +8,11 @@
       <div class="profile-sidebar">
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
-          <img src="{{user.user.avatar}}" class="img-circle" width="100px">
+          <img src="{{user.avatar}}" class="img-circle" width="100px">
           <div class="text-orange tail-po bol">
-            {{user.user.username}}
+            {{user.username}}
           </div>
-        </div>
+        </div><br>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
         <!--<div class="profile-userbuttons">-->
@@ -27,8 +27,8 @@
           <div class="col-2">
             <li>
               <i class="fa fa-user text-orange"></i>
-              <a href="#" class="text-raisin tail-po" [routerLink]="['../profileform', user.user.id]">
-                MODIFIER PROFIL
+              <a href="#" class="text-raisin tail-po" [routerLink]="['../profileform', user.id]">
+                MODIFIER
               </a>
             </li>
           </div>
@@ -42,16 +42,16 @@
           </div>
           <div class="col-2">
             <li>
-              <i class="fa fa-suitcase text-orange"></i>
-              <a href="#" class="text-raisin tail-po">
-                BACKPACK
+                <img class="img-bb" src="{{ 'assets/img/backpack.png' }}">
+                <a href="#" class="text-raisin tail-po" [routerLink]="['../backpackpage', user.id]">
+                BACKPACKS
               </a>
             </li>
           </div>
           <div class="col-2">
             <li>
               <i class="fa fa-plane text-orange"></i>
-              <a href="#" class="text-raisin tail-po">
+              <a href="#" class="text-raisin tail-po" [routerLink]="['../trippage', user.id]">
                 VOYAGES
               </a>
             </li>
@@ -73,22 +73,23 @@
               <tbody>
                 <tr>
                   <td class="wi">NOM</td>
-                  <td class="bo">{{user.user.lastName}}</td>
+                  <td class="bo">{{user.lastName}}</td>
                 </tr>
                 <tr>
                   <td class="wi">PRENOM</td>
-                  <td class="bo">{{user.user.firstName}}</td>
+                  <td class="bo">{{user.firstName}}</td>
                 </tr>
                 <tr>
                   <td class="wi">DATE DE NAISSANCE</td>
-                  <td class="bo">{{user.user.dateOfBirth | date:'dd/mm/yyyy'}}</td>
+                  <td class="bo">{{user.dateOfBirth | date:'dd/mm/yyyy'}}</td>
                 </tr>
                 <tr>
                   <td class="wi">EMAIL</td>
-                  <td class="bo">{{user.user.email}}</td>
+                  <td class="bo">{{user.email}}</td>
                 </tr>
               </tbody>
             </table>
+            <br>
           </div>
         </div>
       </div>

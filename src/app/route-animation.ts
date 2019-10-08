@@ -63,6 +63,42 @@ export const slideInAnimation =
                ], { optional: true }),
           ])
      ]),
+
+
+     transition('dashboard => backpackpage', [
+          query(':enter, :leave',
+               style({ position: 'fixed', width: '100%' }),
+               { optional: true }),
+          group([
+               query(':enter', [
+                   style({ transform: 'translateY(-100%)' }),
+                   animate('0.5s ease-in-out',
+                   style({ transform: 'translateY(0%)' }))
+               ], { optional: true }),
+               query(':leave', [
+                   style({ transform:   'translateY(0%)'}),
+                   animate('0.5s ease-in-out',
+                   style({ transform: 'translateY(100%)' }))
+               ], { optional: true }),
+          ])
+     ]),
+     transition('backpackpage => dashboard', [
+          query(':enter, :leave',
+               style({ position: 'fixed', width: '100%' }),
+               { optional: true }),
+          group([
+               query(':enter', [
+                   style({ transform: 'translateY(-100%)' }),
+                   animate('0.5s ease-in-out',
+                   style({ transform: 'translateY(0%)' }))
+               ], { optional: true }),
+               query(':leave', [
+                   style({ transform:   'translateY(0%)'}),
+                   animate('0.5s ease-in-out',
+                   style({ transform: 'translateY(100%)' }))
+               ], { optional: true }),
+          ])
+     ]),
          transition('login => *', [
           query(':enter, :leave', style({ position: 'fixed', width: ' 100%' }),
            { optional: true }),

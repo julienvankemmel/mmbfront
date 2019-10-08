@@ -25,6 +25,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FooterComponent } from './footer/footer.component';
+import { BackpackpageComponent } from './backpackpage/backpackpage.component';
+import { BackpackformComponent } from './backpackform/backpackform.component';
+import { TrippageComponent } from './trippage/trippage.component';
+import { TripformComponent } from './tripform/tripform.component';
 // import { AuthGuard } from './auth.guard';
 // import { RedirectionComponent } from './redirection/redirection.component';
 // import { ProfileComponent } from './profile/profile.component';
@@ -50,7 +54,11 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
     HomeComponent,
     NavComponent,
-    DashboardComponent
+    DashboardComponent,
+    BackpackpageComponent,
+    BackpackformComponent,
+    TrippageComponent,
+    TripformComponent
     /*RedirectionComponent,
     ProfileComponent,*/
   ],

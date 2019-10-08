@@ -1,0 +1,19 @@
+button {
+    background-color: #ff6600;
+    color: #F9F9F9;
+  }
+  
+  button:hover {
+    background-color: #ff6600;
+    color: #F9F9F9;
+  }
+  
+  .fa
+  {
+    font-size: 40px;
+  }
+  
+  .bor {
+    border-color: #c1c1c1;
+  }
+  
