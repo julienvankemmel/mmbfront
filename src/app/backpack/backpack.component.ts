@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackpackService } from '../backpack.service';
 import { LoginService } from '../login.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-backpack',
@@ -9,7 +10,7 @@ import { LoginService } from '../login.service';
 })
 export class BackpackComponent implements OnInit {
 
-  constructor( private backpackService: BackpackService, private loginService: LoginService) { }
+  constructor( private backpackService: BackpackService, private loginService: LoginService, private userService: UserService) { }
   backpack;
   user;
 
@@ -24,7 +25,7 @@ export class BackpackComponent implements OnInit {
     /**
      * affichage des datas de l'utilisateur (pour test)
      */
-    this.user = this.loginService.getUserData()
+    this.user = this.userService.getUserData()
     .subscribe(data => {
       this.user = data;
       console.log(data);

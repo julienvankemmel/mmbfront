@@ -46,3 +46,7 @@ header {
   .txt-normal{
       font-size: 25px;
   }
+.indexDeux{
+  position: relative;
+  z-index:2;
+}

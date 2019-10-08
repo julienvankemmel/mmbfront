@@ -21,7 +21,7 @@ export class NavComponent implements OnInit {
    */
   isLoggedIn$: Observable<boolean>;
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService, private router: Router, private userService: UserService) { }
   user;
   ngOnInit() {
     /**
@@ -33,7 +33,7 @@ export class NavComponent implements OnInit {
     /**
      * on get les data utilisateurs
      */
-    this.user = this.loginService.getUserData()
+    this.user = this.userService.getUserData()
     .subscribe(data => {
       this.user = data['user'];
     });

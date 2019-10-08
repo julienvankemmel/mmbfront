@@ -9,15 +9,21 @@ import { LoginService } from './login.service';
  * et inclure le jwt dans le header, si il existe
  */
 @Injectable()
+
 export class TokenInterceptor implements HttpInterceptor {
     authService: any;
+    
 
   constructor() { }
 
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+    
     if (localStorage.getItem('jwt')) {
+      if (request.url.includes("localhost") || request.url.includes("127.0.0.1")){
         request = this.addToken(request, localStorage.getItem('jwt'));
+      }
       }
 
     return next.handle(request);
@@ -34,7 +40,7 @@ export class TokenInterceptor implements HttpInterceptor {
     private addToken(request: HttpRequest<any>, token: string) {
       return request.clone({
         setHeaders: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         }
       });
     }
