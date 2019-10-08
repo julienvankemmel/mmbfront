@@ -33,3 +33,6 @@
   color: #ff6600;
 }
 
+.nav-link{
+  cursor:pointer!important;
+}
