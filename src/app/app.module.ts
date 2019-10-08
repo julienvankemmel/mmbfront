@@ -28,6 +28,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthGuard } from './auth.guard';
 // import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { TokenInterceptor } from './token-interceptor';
 
 @NgModule({
@@ -51,7 +52,8 @@ import { TokenInterceptor } from './token-interceptor';
     FooterComponent,
     HomeComponent,
     NavComponent,
-    DashboardComponent
+    DashboardComponent,
+    ShortNumberPipe
   ],
   imports: [
     BrowserModule,
