@@ -1,0 +1,30 @@
+.imgCountry{
+    background-image: cover;
+    width: 100vw;
+}
+
+.blocInfos{
+    background-color: #e0DDD5;
+    color: white;
+    text-align: center;
+}
+
+.blocApi{
+
+}
+
+.splitInfos{
+    float: left;
+}
+
+.countryAddComment{
+    border: none;
+    outline-color: #c1c1c1;
+    resize: none;
+}
+
+button{
+    background-color: #ff6600;
+    color: white;
+    border: none;
+}
