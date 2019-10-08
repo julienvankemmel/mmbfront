@@ -11,18 +11,23 @@
     
     <!-- si l'utilisateur est connecté, on affiche mon profil/ connexion
         sinon on affiche inscription/ connexion-->
-        <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn$ | async; else loggedOut">
-            <li class="nav-item active">
-                <a class="nav-link" routerLink='dashboard'>MON PROFIL</a>
-              </li>
-              <span class="nav-link bo">/</span>
-              <li class="nav-item active">
-                  <button type="button" class="btn btn-dark" (click)= logOut()>DECONNEXION</button>
-              </li>
-        </ul>
+        <div class="navbar-nav ml-auto" *ngIf="isLoggedIn$ | async; else loggedOut">
+
+            <div class="dropdown dropleft">
+                <a class="my-auto" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img *ngIf="user.avatar" src="{{user.avatar}}" class="avatar my-auto  rounded-circle">
+                  <i *ngIf="!user.avatar" class="fa fa-user-circle text-light avft my-auto"></i>
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="nav-link text-dark" routerLink='dashboard'>Mon profil</a>
+                    <a class="nav-link text-dark" (click)= logOut()>Déconnexion</a>
+                </div>
+              </div>
+            </div>
 
       <ng-template #loggedOut>
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" routerLink='register'>INSCRIPTION</a>
           </li>

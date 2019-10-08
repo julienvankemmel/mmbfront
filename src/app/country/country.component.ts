@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CountryService } from '../country.service';
 import { BackpackService } from '../backpack.service';
+import { CountryImageService } from '../country-image.service';
 
 /**
  * url pour récupérer le pays par nom choisi dans le select
@@ -24,9 +25,11 @@ export class CountryComponent implements OnInit, OnDestroy {
   id: any;
   country: any;
   backpack: any;
+  error: any;
+  image: any;
 
   constructor(public http: HttpClient, private route: ActivatedRoute, public countryService: CountryService,
-              public backpackService: BackpackService) {
+              public backpackService: BackpackService, public countryImageService: CountryImageService) {
 
     /**
      * ActivatedRoute permet de récuperer le nom du pays et l'id
@@ -36,29 +39,25 @@ export class CountryComponent implements OnInit, OnDestroy {
      */
 this.route.params.subscribe( params => this.name = params.name);
 this.route.params.subscribe( params => this.id = params.id);
-
-
-
    }
-
   ngOnInit() {
-
     /**
      * retour des datas restcountries
      */
     this.resultat = this.getPays();
-
     /**
      * recuperation des datas en db (backpacks, items, etc...)
      * en argument l'id du pays récupérer ici dans params => this.id = params.id
      * ligne 38
      */
     this.country = this.countryService.getCountryById(this.id)
-
     .subscribe(data => {
       this.country = data.country;
-      console.log(data.country);
+      this.image = this.countryImageService.getImageByCountry(this.country.name)
+      .subscribe(img => {this.image = img['results'][0];
+      });
     });
+
   }
 
   /**
@@ -72,7 +71,6 @@ this.route.params.subscribe( params => this.id = params.id);
   }
 
   ngOnDestroy() {
-
     // this.backpack.unsubscribe();
   }
 }

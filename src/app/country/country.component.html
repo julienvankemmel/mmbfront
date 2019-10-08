@@ -1,97 +1,40 @@
-
-  <!-- Image du pays -->
-  <div class=""><img src="https://bootcampaign.org/wp-content/uploads/2018/10/huib-scholten-403238-unsplash.jpg"
-    class="imgCountry"></div>
-    
-    <div class="container">
-  <!-- Bloc 1 : Infos générales -->
-  <div class="row mt-4">
-    <div class="col-12 col-md-8 blocApi">
-      <div class="splitInfos">
-          <img width="100px" src="{{resultat.flag}}" alt=""><br>
-          <h3>{{resultat.name}}</h3>
-          <p>Capitale : {{resultat.capital}}</p><br>
+<header>
+    <div class="overlay">
+      <img *ngIf="image; else noImg" src="{{image.urls.full}}" class="img-fluid bgImg">
+      <ng-template #noImg>
+          <img src="assets/img/backpack.jpg" alt="" class="img-fluid bgImg">
+      </ng-template>
+    </div>
+    <div class="indexDeux h-100">
+      <div class="d-flex text-center h-100">
+        <div class="my-auto mx-auto w-100 text-light display-4">
+          <div class="d-inline">
+              <h1 class="my-auto mx-auto">{{country.name}}<img height="30px" src="{{resultat.flag}}" class="ml-2 my-auto"></h1>
+          </div>
+          <div class="d-inline txt-normal">
+              <p>
+                Capitale : {{resultat.capital}} 
+                <B class="text-orange">/</B> 
+                Population : {{resultat.population | shortNumber}} habitants
+                <B class="text-orange">/</B> 
+                Langage(s)
+                <span *ngFor="let language of resultat.languages">
+                  - {{language.name}} 
+                </span>
+                <B class="text-orange">/</B> 
+                Monnaie(s) :
+                <span *ngFor="let money of resultat.currencies">
+                  - {{money.name}} {{money.symbol}}
+                </span>
+                <B class="text-orange">/</B> 
+                Indicatif téléphonique : 
+                +{{resultat.callingCodes}}
+              </p>
+          </div>
+        </div>
       </div>
-      <div class="splitInfos">
-          <p><strong>Population : </strong></p>
-          <p>{{resultat.population}} habitants</p>
-          <p>Indicatif téléphonique : {{resultat.callingCodes}}</p>
-      </div>
     </div>
-    <div class="col-6 col-md-4 blocInfos">Informations générales</div>
+  </header>
+  <div class="container">
+
   </div>
-
-  <!-- Bloc 2 : langages -->
-  <div class="row mt-4">
-    <div class="col-6 col-md-4 blocInfos">Langage(s)</div>
-    <div class="col-12 col-md-8">
-      <p *ngFor="let language of resultat.languages">
-        -{{language.name}}
-      </p>
-    </div>
-  </div>
-
-  <!-- Bloc 3 : monnaie -->
-  <div class="row mt-4">
-    <div class="col-12 col-md-8">
-      <p *ngFor="let money of resultat.currencies">
-        -{{money.name}} ({{money.symbol}})
-      </p>
-    </div>
-    <div class="col-6 col-md-4 blocInfos">Monnaie(s)</div>
-  </div>
-
-  <!--  à revoir j'ai la flemme :-D -->
-  <div *ngIf='country.backpacks !=0; else nobp'>
-    <h1>{{country.name}}</h1>
-    <div *ngFor="let backpack of country.backpacks">
-      <ul class="list-group mt-2" *ngFor="let item of backpack.backpackitem">
-        <h3>Catégories : {{item.categoryItem.name}}</h3>
-        <li class="list-group-item">{{item.name}}</li>
-      </ul>
-    </div>
-  </div>
-  <ng-template #nobp>Pas encore de backpack pour cette destination !</ng-template>
-
-  <!-- Commentaires -->
-  <div>
-    <p>Commentaires</p>
-    <textarea name="addComment" cols="80" rows="5" class="countryAddComment"></textarea><br>
-    <button>Ajouter</button>
-  </div>
-
-</div>
-
-
-
-
-
-
-<!-- CODE DE JO CI-DESSOUS, EN SAUVEGARDE AU CAS OU -->
-
-<!-- <div class="container">
-  <div><img src="https://bootcampaign.org/wp-content/uploads/2018/10/huib-scholten-403238-unsplash.jpg"
-      class="imgCountry"></div> -->
-
-<!-- div pour afficher les données -->
-
-<!-- <div class="col-md-8 mt-5 mb-5">
-    <br><br><br><br><br> -->
-<!-- affichage du drapeau -->
-<!-- <img width="100px" src="{{resultat.flag}}" alt=""><br>
-    <h3>Capitale : {{resultat.capital}}</h3> <br>
-    <p><strong>Population : </strong></p>
-    <p>{{resultat.population}} habitants</p> -->
-<!-- la langue est dans un nested array, il faut donc itérer l'array languages dans l'array result-->
-<!-- <p><strong>Langage(s)</strong> : </p>
-    <p *ngFor="let language of resultat.languages">
-      -{{language.name}}
-    </p> -->
-<!-- la monnaie est dans un nested array, il faut donc itérer l'array currencies dans l'array result-->
-<!-- <p><strong>Monnaie(s) : </strong></p>
-    <p *ngFor="let money of resultat.currencies">
-      -{{money.name}} ({{money.symbol}})
-    </p>
-    <p><strong>Indicatif téléphonique : </strong>
-      <p>{{resultat.callingCodes}}</p>
-  </div> -->

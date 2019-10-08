@@ -4,6 +4,7 @@ import { map, tap, catchError } from 'rxjs/operators';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { HeaderService } from './header.service';
 import { Router } from '@angular/router';
+import { UserService } from './user.service';
 
 /**
  * Ce service gère :
@@ -11,7 +12,6 @@ import { Router } from '@angular/router';
  * le login de l'utilisateur
  * la gestion de la variable loggedIn
  * qui représente la connexion utilisateur (pour auth guard)
- * la récupération des datas de l'utilisateur
  */
 
 @Injectable({
@@ -20,7 +20,8 @@ import { Router } from '@angular/router';
 export class LoginService {
 
 
-  constructor(private http: HttpClient, private headerService: HeaderService, private router: Router) {
+  constructor(private http: HttpClient, private headerService: HeaderService, private router: Router,
+              private userService: UserService) {
 
   }
   data: any;
@@ -35,11 +36,6 @@ export class LoginService {
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
-
-  /**
-   * construction du header à envoyer avec la requête vers API
-   */
-  headerJwt = this.headerService.headerBuilder();
 
   /**
    * cette fonction permet de garder loogedIn à true
@@ -60,7 +56,8 @@ export class LoginService {
     return this.http.post<any>(url, user, { responseType: 'json' })
       .pipe(
 
-        tap((data) => {
+        map((data) => {
+
           if (data) {
             /**
              * si on reçoit une réponse du serveur on enregistre le jwt et
@@ -77,7 +74,9 @@ export class LoginService {
 
 
   }
-
+/**
+ * Deconnexion
+ */
   logout() {
     this.loggedIn.next(false);
     localStorage.removeItem('jwt');
@@ -102,20 +101,9 @@ export class LoginService {
 
   }
 
-  /**
-   * affichage liste utilisateurs (pour test)
-   */
-  getUserData(): Observable<any[]> {
-    return this.http.get<any[]>('http://127.0.0.1:8000/api/userdata', this.headerJwt)
-    .pipe(
-
-          catchError(this.handleDeconnectionError),
-
-      );
-
-
-  }
-
+/**
+ * Traitement des erreurs HTTP
+ */
 
   /**
    *
@@ -125,10 +113,9 @@ export class LoginService {
   handleLoginError(error) {
 
     let errorMessage = '';
-
     errorMessage = error.error.message;
-
     return throwError(errorMessage);
+
   }
 
   /**
@@ -143,24 +130,6 @@ export class LoginService {
     errorMessage = error.error.violations[0].title;
 
     return throwError(errorMessage);
-  }
-
-  /**
-   *
-   * @param error
-   * traitement des erreurs deconnexion
-   * si l'utilisateur est deconnecté, jwt expiré,
-   * une erreur 401 est renvoyée, on se basera
-   * sur cela pour gérer la deconnexion
-   */
-  handleDeconnectionError(error) {
-
-    let errorStatus: number;
-
-    errorStatus = error.error.code;
-    console.log(errorStatus);
-    return throwError(errorStatus);
-
   }
 
 }

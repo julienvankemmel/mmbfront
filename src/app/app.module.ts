@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BackpackComponent } from './backpack/backpack.component';
@@ -35,6 +35,8 @@ import { TripformComponent } from './tripform/tripform.component';
 import { AuthGuard } from './auth.guard';
 // import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { ShortNumberPipe } from './pipes/short-number.pipe';
+import { TokenInterceptor } from './token-interceptor';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     TripformComponent,
     /*RedirectionComponent,
     ProfileComponent,*/
-    DashboardComponent
+    DashboardComponent,
+    ShortNumberPipe
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,13 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     // AngularFontAwesomeModule
     FilterPipeModule
   ],
-  providers: [AuthGuard,
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    AuthGuard,
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
