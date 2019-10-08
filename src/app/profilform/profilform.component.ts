@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProfilformComponent implements OnInit {
 
-  constructor( private loginService: LoginService, private userService: UserService,
+  constructor( private userService: UserService,
                private route: ActivatedRoute, private router: Router ) {
 
 
@@ -49,7 +49,7 @@ this.route.params.subscribe( params => this.id = params.id);
     /**
      * affichage des datas de l'utilisateur (pour test)
      */
-    this.user = this.loginService.getUserData()
+    this.user = this.userService.getUserData()
     .subscribe(data => {
       this.user = data['user'];
     },

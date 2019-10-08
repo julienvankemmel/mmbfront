@@ -18,26 +18,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
      */
     this.route.params.subscribe(params => this.id = params.id);
 
-
-
-    this.user = this.loginService.getUserData()
-    .subscribe(data => {
-      this.user = data['user'];
-      console.log(data);
-    },
-    error => {
-      /**
-       * erreur 401 indique que le jwt est expiré
-       * on redirige vers le login
-       */
-    /*  if (error === 401) {
-
-        localStorage.removeItem('jwt');
-        this.router.navigate(['login']);
-      }*/
-
-    });
-
   }
 
   id: any;
@@ -45,12 +25,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.user = this.userService.getUserData()
+  .subscribe(data => {
+    this.user = data['user'];
+    console.log(data);
+  },
+  error => {
     /**
-     * affichage des datas de l'utilisateur (pour test)
+     * erreur 401 indique que le jwt est expiré
+     * on redirige vers le login
      */
-    this.user = this.loginService.getUserData();
+    if (error === 401) {
+
+      localStorage.removeItem('jwt');
+      this.router.navigate(['login']);
+    }
+
+  });
 
   }
+
 
   ngOnDestroy() {
 
