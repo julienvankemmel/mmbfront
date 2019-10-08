@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profilform',
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfilformComponent implements OnInit {
 
   constructor( private loginService: LoginService, private userService: UserService,
-               private route: ActivatedRoute ) {
+               private route: ActivatedRoute, private router: Router ) {
 
 
     /**
@@ -22,7 +22,6 @@ export class ProfilformComponent implements OnInit {
 this.route.params.subscribe( params => this.id = params.id);
 
   }
-
 
   // récupération de la valeur des inputs
 
@@ -35,6 +34,7 @@ this.route.params.subscribe( params => this.id = params.id);
   get email() { return this.profileForm.get('email'); }
 
   get avatar() { return this.profileForm.get('avatar') ; }
+
 
   profileForm: FormGroup;
   loading: boolean;
@@ -51,8 +51,21 @@ this.route.params.subscribe( params => this.id = params.id);
      */
     this.user = this.loginService.getUserData()
     .subscribe(data => {
-      this.user = data;
+      this.user = data['user'];
+    },
+    error => {
+      /**
+       * erreur 401 indique que le jwt est expiré
+       * on redirige vers le login
+       */
+      if (error === 401) {
+
+        localStorage.removeItem('jwt');
+        this.router.navigate(['login']);
+      }
+
     });
+
 
       // construction du formulaire
     this.profileForm = new FormGroup({
@@ -64,6 +77,7 @@ this.route.params.subscribe( params => this.id = params.id);
       });
   }
 
+  // conversion de l'image en base64
   onFileSelect(e) {
     const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     const pattern = /image-*/;
@@ -78,30 +92,19 @@ this.route.params.subscribe( params => this.id = params.id);
   _handleReaderLoaded(e) {
     const reader = e.target;
     this.imageSrc = reader.result;
-    console.log(this.imageSrc);
     this.profileForm.get('avatar').setValue(this.imageSrc);
   }
 
 
   onSubmit() {
 
-   /* const uploadData = new FormData();
-
-    uploadData.append('firstName', this.firstName.value);
-    uploadData.append('lastName', this.lastName.value);
-    uploadData.append('dateOfBirth', this.dateOfBirth.value);
-    uploadData.append('email', this.email.value);
-    uploadData.append('avatar', this.selectedFile);*/
-
     this.userService.putUser(this.profileForm.value, this.id).subscribe(
 
      // traitement de la réponse HTTP, en cas d'erreur on affiche
      // l'erreur dans la vue
        users => {
-         console.log(this.profileForm.value);
-
-          // redirection
-        //  this.router.navigate(['']);
+         console.log(users);
+         this.user = users;
        },
        error => {
          this.error = error;

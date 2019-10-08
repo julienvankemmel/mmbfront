@@ -8,17 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class CountryService {
 
-  constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  getCountry():Observable<any[]>{
-    return this.http.get<any[]>('http://127.0.0.1:8000/api/countries')
+  getCountry(): Observable<any[]>{
+    return this.http.get<any[]>('http://127.0.0.1:8000/country')
     .pipe(
       tap(data => data)
     )
   }
 
   getCountryById(id): Observable<any>{
-    return this.http.get<any>('http://127.0.0.1:8000/api/countries'+id)
+    return this.http.get<any>('http://127.0.0.1:8000/country/' + id)
     .pipe(
       tap(data => data)
     )
@@ -39,7 +39,7 @@ export class CountryService {
 }
 
   /**
-   * @param id 
+   * @param id
    */
   deleteCountry(id): Observable<any> {
     const url = 'http://127.0.0.1:8000/api/countries' + id;

@@ -3,21 +3,29 @@
   <div class="row d-flex justify-content-center mt-5">
     <div class="col-md-6">
       <h1 class="text-center mt-5">S'inscrire</h1>
+
+      <!--             début formulaire              -->
       <form class="mt-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="username">Pseudo</label>
           <input type="text" class="form-control" id="username" placeholder="Choisissez un pseudo"
             formControlName="username">
+
+            <!-- alerte username-->
           <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert">
             <div *ngIf="username.errors.required">
               Ce champ est requis
             </div>
           </div>
+           <!-- fin alerte username-->
+
         </div>
         <div class="form-group">
           <label for="password">Mot de passe</label>
           <input type="password" class="form-control" id="password" placeholder="Choisissez un mot de passe"
             formControlName="password">
+
+             <!-- alerte password-->
           <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
             <div *ngIf="password.errors.minlength">
               6 caractères minimum
@@ -26,19 +34,27 @@
               Ce champ est requis
             </div>
           </div>
+           <!-- fin alerte username-->
+
         </div>
         <div class="form-group">
           <label for="confirmPassword">Confirmer votre mot de passe</label>
           <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmez un mot de passe"
             formControlName="confirmPassword">
+
+             <!-- alerte confirmPassword-->
             <p *ngIf="confirmPassword.errors || registerForm.errors?.mismatch" class="alert">
                 <i class="icon fa fa-exclamation-triangle mr-2"></i> Les mots de passe doivent être identiques
             </p>
+            <!-- fin alerte confirmPassword-->
           </div>
           <p class="alert mt-2">{{error}}</p>
         <button type="submit" class="register btn btn-primary" [disabled]="!registerForm.valid">Inscription</button>
       </form>
-      <!--<p class="alert mt-2">{{user.message}}</p>-->
+
+      <!-- alerte pseudo déjà utilisé-->
+      <p class="alert mt-2" *ngIf="user">{{user.message}}</p>
+      <!-- fin alerte pseudo déjà utilisé-->
     </div>
   </div>
   <div class="text-center mt-5">

@@ -8,10 +8,38 @@
     <div class="d-flex text-center h-100">
       <div class="my-auto mx-auto w-100 text-light display-4">
         <h1>Voyagez léger<br>votre backpack est déjà fait</h1>
-          <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="mx-auto input-group w-40">
+         <!-- <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="mx-auto input-group w-40">
               <input class="form-control text-center selector my-auto" id="exampleSelect1" placeholder="France" formControlName="search">
-              <span class="input-group-addon bg-transparent"><i class="fa fa-search text-orange my-auto bg-transparent" type="submit"></i></span>
-          </form>
+              <button class="input-group-addon bg-transparent"><i class="fa fa-search text-orange my-auto bg-transparent" type="submit"></i></button>
+          </form>-->
+         <!-- déclenche la méthode pour récupérer le pays choisi et son id -->
+         <select class="form-control" (change)="selectChangeHandler($event)">
+          <!-- value doit récupérer le code alpha pour la recherche dans l'API + l'id du pays
+          pour l'identifier en db -->
+          <option disabled>Liste des pays</option>
+          <option *ngFor="let pays of liste | keyvalue" value="{{pays.value.alpha2}}/{{pays.value.id}}">
+            <!-- affichage du pays en français -->
+            {{pays.value.name}}
+          </option>
+        </select>
+        <div>
+         <!-- <input class="form-control" type="text" [(ngModel)]="term">
+          
+            <a [routerLink]="['../country', pays.alpha2, pays.id]"  *ngFor = "let pays of liste |filter:term | slice:0:1">
+              {{pays.name}}
+              <p *ngIf="!pays.name">no results</p>
+            </a>-->
+            <div>
+              <input class="form-control" type="text" [(ngModel)]="countryFilter.name" placeholder="name">
+              <ul>
+                <a [routerLink]="['../country', country.alpha2, country.id]" *ngFor="let country of liste | filterBy: countryFilter | slice:0:1">{{ country.name }}</a>
+                
+                <!-- in case you want to show empty message -->
+                
+                <p *ngIf="(liste | filterBy: countryFilter).length === 0">Pas de résultat</p>
+              </ul>
+          </div>  
+      </div> 
       </div>
     </div>
   </div>

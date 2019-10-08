@@ -12,17 +12,21 @@ import { BackpackformComponent } from './backpackform/backpackform.component';
 import { TrippageComponent } from './trippage/trippage.component';
 import { TripformComponent } from './tripform/tripform.component';
 // import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './auth.guard';
+import { CountryComponent } from './country/country.component';
 
 const routes: Routes = [
 
-  {path: '', component: HomeComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent,  data: {animation: 'home'}},
   {path: 'login', component: LoginComponent,  data: {animation: 'login'}},
   {path: 'backpack/:country', component: BackpackComponent},
   {path: 'register', component: RegisterComponent,  data: {animation: 'register'}},
   {path: 'contact', component: ContactComponent},
+  {path: 'country/:name/:id', component: CountryComponent},
 
   /**
-   * les pages "profile" sont protégées par authguard
+   * ces pages sont protégées par authguard
    */
   {path: 'dashboard', component: DashboardComponent,/* canActivate: [AuthGuard],*/ data: {animation: 'profile'}},
   {path: 'profileform/:id', component: ProfilformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'profileform'}},
@@ -30,6 +34,8 @@ const routes: Routes = [
   {path: 'backpackform/:id', component: BackpackformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'backpackform'}},
   {path: 'trippage/:id', component: TrippageComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'trippage'}},
   {path: 'tripform/:id', component: TripformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'tripform'}},
+  {path: 'profileform/:id', component: ProfilformComponent, canActivate: [AuthGuard], data: {animation: 'profileform'}},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {animation: 'profile'}}
 ];
 
 @NgModule({

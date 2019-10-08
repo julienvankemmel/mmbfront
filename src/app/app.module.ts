@@ -32,6 +32,9 @@ import { TripformComponent } from './tripform/tripform.component';
 // import { AuthGuard } from './auth.guard';
 // import { RedirectionComponent } from './redirection/redirection.component';
 // import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './auth.guard';
+// import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   declarations: [
@@ -58,9 +61,10 @@ import { TripformComponent } from './tripform/tripform.component';
     BackpackpageComponent,
     BackpackformComponent,
     TrippageComponent,
-    TripformComponent
+    TripformComponent,
     /*RedirectionComponent,
     ProfileComponent,*/
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -71,9 +75,11 @@ import { TripformComponent } from './tripform/tripform.component';
     RecaptchaModule,
     RecaptchaFormsModule,
     AppRoutingModule,
+    // Ng2SearchPipeModule
     // AngularFontAwesomeModule
+    FilterPipeModule
   ],
-  providers: [/*AuthGuard*/,
+  providers: [AuthGuard,
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
