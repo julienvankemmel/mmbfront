@@ -10,8 +10,8 @@ export class CommentService {
 
   constructor(private http:HttpClient) {}
 
-  getComment():Observable<any[]>{
-    return this.http.get<any[]>('http://127.0.0.1:8000/api/comments')
+  getComment(id):Observable<any[]>{
+    return this.http.get<any[]>('http://127.0.0.1:8000/comment/'+id)
     .pipe(
       tap(data => data)
     )

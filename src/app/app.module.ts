@@ -38,6 +38,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
 import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { TokenInterceptor } from './token-interceptor';
 import { PostpageComponent } from './postpage/postpage.component';
+import { ArraySortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,8 @@ import { PostpageComponent } from './postpage/postpage.component';
     HomeComponent,
     NavComponent,
     DashboardComponent,
+    ShortNumberPipe,
+    ArraySortPipe,
     BackpackpageComponent,
     BackpackformComponent,
     TrippageComponent,

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CountryService } from '../country.service';
 import { BackpackService } from '../backpack.service';
 import { CountryImageService } from '../country-image.service';
+import { CommentService } from '../comment.service';
 
 /**
  * url pour récupérer le pays par nom choisi dans le select
@@ -27,9 +28,10 @@ export class CountryComponent implements OnInit, OnDestroy {
   backpack: any;
   error: any;
   image: any;
+  comments:any;
 
   constructor(public http: HttpClient, private route: ActivatedRoute, public countryService: CountryService,
-              public backpackService: BackpackService, public countryImageService: CountryImageService) {
+              public backpackService: BackpackService, public countryImageService: CountryImageService, private commentService:CommentService) {
 
     /**
      * ActivatedRoute permet de récuperer le nom du pays et l'id
@@ -52,14 +54,27 @@ this.route.params.subscribe( params => this.id = params.id);
      */
     this.country = this.countryService.getCountryById(this.id)
     .subscribe(data => {
+
       this.country = data.country;
-      this.image = this.countryImageService.getImageByCountry(this.country.name)
-      .subscribe(img => {this.image = img['results'][0];
+      /**
+       * On recherche l'image via le nom de la capital sur unsplash
+       */
+      this.image = this.countryImageService.getImageByCountry(this.resultat.capital)
+      .subscribe(img => {this.image = img['results']['0'];
       });
     });
+    /**
+     * Récupération des commentaires
+     */
+    this.comments = this.commentService.getComment(this.id)
+    .subscribe(comments => {this.comments = comments['comment'];
+      console.log(this.comments);
+      });
 
   }
-
+  scrollToElement($element): void {
+    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
   /**
    *
    * requete à l'API restcountries pour afficher les données du pays
