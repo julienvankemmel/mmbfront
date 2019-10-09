@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
+import { BackpackService } from '../backpack.service';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+
 
 
 @Component({
@@ -11,28 +15,40 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BackpackformComponent implements OnInit {
 
+    backpackForm: FormGroup;
+    items: FormArray;
+
     constructor(private loginService: LoginService, private userService: UserService,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute, private formBuilder: FormBuilder) {
   
+
+            // construction du formulaire
+            //this.backpackform = new FormGroup({
+            //  });
+
+              
       /**
-       * ActivatedRoute permet de récuperer l'ID
-       */
-  this.route.params.subscribe( params => this.id = params.id);
-                 }
+      * ActivatedRoute permet de récuperer l'ID
+      */
+      this.route.params.subscribe( params => this.id = params.id);
+    }
   
   id: any;
-  user: any;
+  trip: any;
   
     ngOnInit() {
+
   
       /**
        * affichage des datas de l'utilisateur (pour test)
        */
-      this.user = this.loginService.getUserData()
+      this.trip = this.userService.getUserData()
       .subscribe(data => {
-        this.user = data.user;
-        console.log(data);
+      this.trip = data.user.trip;
+      console.log(data.user.trip)
+
+      this.id;
       });
-    }
-  
+        
+  }
 }

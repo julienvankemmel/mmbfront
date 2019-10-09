@@ -14,6 +14,8 @@ import { TripformComponent } from './tripform/tripform.component';
 // import { AuthGuard } from './auth.guard';
 import { AuthGuard } from './auth.guard';
 import { CountryComponent } from './country/country.component';
+import { PostpageComponent } from './postpage/postpage.component';
+
 
 const routes: Routes = [
 
@@ -35,7 +37,7 @@ const routes: Routes = [
   {path: 'trippage/:id', component: TrippageComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'trippage'}},
   {path: 'tripform/:id', component: TripformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'tripform'}},
   {path: 'profileform/:id', component: ProfilformComponent, canActivate: [AuthGuard], data: {animation: 'profileform'}},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {animation: 'profile'}}
+  {path: 'postpage/:id', component: PostpageComponent, canActivate: [AuthGuard], data: {animation: 'postpage'}},
 ];
 
 @NgModule({

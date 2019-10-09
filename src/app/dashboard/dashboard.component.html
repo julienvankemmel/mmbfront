@@ -36,7 +36,7 @@
           <div class="col-2">
             <li>
               <i class="fa fa-envelope text-orange"></i>
-              <a href="#" class="text-raisin tail-po">
+              <a href="#" class="text-raisin tail-po" [routerLink]="['../postpage', user.id]">
                 POSTS
               </a>
             </li>
@@ -82,7 +82,7 @@
                 </tr>
                 <tr>
                   <td class="wi">DATE DE NAISSANCE</td>
-                  <td class="bo">{{user.dateOfBirth | date:'dd/MM/yyyy'}}</td>
+                  <td class="bo">{{user.dateOfBirth | date:'dd/MM/yyyy':'GMT+2'}}</td>
                 </tr>
                 <tr>
                   <td class="wi">EMAIL</td>

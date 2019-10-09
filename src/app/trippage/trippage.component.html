@@ -3,39 +3,34 @@
     <h1 class="text-center mt-5 text-raisin">
         MES VOYAGES
     </h1><br><br>
-        <div class="card text-center">
+        <div class="card text-center mb-5" *ngFor="let card of trip">
             <div class="card-header bg-rb wi bor">
-                NOM VOYAGE 
-                <span class="bo">/</span>     
-                PAYS
+               <span>{{card.name}}</span>
             </div>
             <div class="card-body bg-rb">
                 <div class="row">
                     <div class="col bo">
                         Date de départ <br>
-                        <span class="wi">JJ-MM-AAAA</span>
+                        <span class="wi">{{card.startDate | date:'dd/MM/yyyy':'GMT+2'}}</span>
                     </div>
                     <div class="col bo">
-                        Date d'arrivée <br>
-                        <span class="wi">JJ-MM-AAAA</span>
+                        Date de retour <br>
+                        <span class="wi">{{card.endDate | date:'dd/MM/yyyy':'GMT+2'}}</span>
                     </div>
                 </div><br>
                 <div class="row">
-                    <div class="col wi">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus deleniti doloremque cum delectus. Non distinctio laborum inventore totam? Repellendus maiores minima delectus quasi autem mollitia molestiae, modi culpa soluta vel?</div>
+                    <div class="col wi">{{card.content}}</div>
                 </div>
             </div>
             <div class="card-footer bg-rb wi bor">
-                <div class="row">
-                    <div class="col">
-                        Date de création :
-                    </div>
-                    <div class="col">
-                        Dernière modification :
-                    </div>
+                <div class="row mx-auto d-inline" *ngFor="let country of card.countries; let i=index" >
+                    <span class="d-inline" >
+                        {{country.name}} <span *ngIf="i<card.countries.length-1" class="bo">/ </span>     
+                    </span>
                 </div>
             </div>
         </div>
-        <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Créer un voyage" [routerLink]="['../../tripform', user.id]"><i class="fa fa-plus-circle text-orange"></i></a>
+        <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Créer un voyage" [routerLink]="['../../tripform',id]"><i class="fa fa-plus-circle text-orange"></i></a>
         <a class="nav-link text-right" data-toggle="tooltip" data-placement="top" title="Retour au profil" routerLink='../../dashboard'><i class="fa fa-angle-up text-orange"></i></a>
 </div>
   

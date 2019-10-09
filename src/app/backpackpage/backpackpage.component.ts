@@ -49,7 +49,7 @@ ngOnInit() {
 /**
 * affichage des datas de l'utilisateur (pour test)
 */
-this.user = this.loginService.getUserData()
+this.user = this.userService.getUserData()
 .subscribe(data => {
 this.user = data.user;
 console.log(data.user);

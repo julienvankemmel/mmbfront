@@ -37,6 +37,7 @@ import { AuthGuard } from './auth.guard';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { TokenInterceptor } from './token-interceptor';
+import { PostpageComponent } from './postpage/postpage.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { TokenInterceptor } from './token-interceptor';
     /*RedirectionComponent,
     ProfileComponent,*/
     DashboardComponent,
-    ShortNumberPipe
+    ShortNumberPipe,
+    PostpageComponent
   ],
   imports: [
     BrowserModule,

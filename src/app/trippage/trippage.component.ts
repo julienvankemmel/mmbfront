@@ -15,45 +15,31 @@ export class TrippageComponent implements OnInit {
 
   constructor( private loginService: LoginService, private userService: UserService,
     private route: ActivatedRoute ) {
+      this.route.params.subscribe( params => this.id = params.id);
+    }
 
 
-/**
-* ActivatedRoute permet de récuperer l'ID
-*/
-this.route.params.subscribe( params => this.id = params.id);
 
-}
-
-
-// récupération de la valeur des inputs
-
-get firstName() { return this.profileForm.get('firstName'); }
-
-get lastName() { return this.profileForm.get('lastName'); }
-
-get dateOfBirth() { return this.profileForm.get('dateOfBirth'); }
-
-get email() { return this.profileForm.get('email'); }
-
-get avatar() { return this.profileForm.get('avatar') ; }
 
 profileForm: FormGroup;
 loading: boolean;
 error: string;
-user: any;
+trip: any;
 id: any;
 
 private imageSrc = '';
+
 
 ngOnInit() {
 
 /**
 * affichage des datas de l'utilisateur (pour test)
 */
-this.user = this.loginService.getUserData()
+this.trip = this.userService.getUserData()
 .subscribe(data => {
-this.user = data.user;
-console.log(data.user);
+this.trip = data.user.trip;
+console.log(data.user.trip)
+this.id;
 });
 
 // construction du formulaire

@@ -5,16 +5,37 @@
       <form class="mt-5" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="" class="text-raisin">Nom du backpack</label>
-          <input type="text" class="form-control" id="" placeholder="" value="">
+          <input type="text" class="form-control" id="" placeholder="" value="" placeholder="Nom de votre backpack" formControlName="name">
         </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Sélectionner un de vos voyages...</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option></option>
-          </select>
-          <small class="form-text text-muted">...ou pas !</small>
-        </div><br><br>
-        <div class="form-group">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Sélectionnez votre voyage</label>
+            <select class="form-control" (change)="selectChangeHandler($event)">
+              <option disabled>Liste de vos voyages</option>
+              <option *ngFor="let pays of trip | keyvalue" value="{{pays.value.name}}">
+                <!-- affichage du pays en français -->
+                {{pays.value.name}}
+              </option>
+            </select>
+          </div><br><br>
+
+
+          <div formArrayName="items"
+          *ngFor="let item of backpackForm.get('items').controls; let i = index;">
+          <div [formGroupName]="i">
+            <input formControlName="name" placeholder="Item name">
+            <input formControlName="description" placeholder="Item description">
+            <input formControlName="price" placeholder="Item price">
+          </div>
+        
+          Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }}
+        </div>
+
+
+
+
+
+
+          <div class="form-group">
           <label for="" class="text-raisin">Ajouter un item</label>
           <input type="text" class="form-control" id="" placeholder="" value="">
         </div>
@@ -51,5 +72,5 @@
     </div>
   </div>
   <a class="nav-link text-right" data-toggle="tooltip" data-placement="top" title="Retour au profil"
-    routerLink='../../dashboard'><i class="fa fa-angle-up text-orange"></i></a>
+  [routerLink]="['../../backpackpage',id]"><i class="fa fa-angle-up text-orange"></i></a>
 </div>
