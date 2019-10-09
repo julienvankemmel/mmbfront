@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent,  data: {animation: 'register'}},
   {path: 'contact', component: ContactComponent},
   {path: 'country/:name/:id', component: CountryComponent},
-
+  
   /**
    * ces pages sont protégées par authguard
    */

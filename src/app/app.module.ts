@@ -30,6 +30,7 @@ import { AuthGuard } from './auth.guard';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { TokenInterceptor } from './token-interceptor';
+import { ArraySortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { TokenInterceptor } from './token-interceptor';
     HomeComponent,
     NavComponent,
     DashboardComponent,
-    ShortNumberPipe
+    ShortNumberPipe,
+    ArraySortPipe
   ],
   imports: [
     BrowserModule,
