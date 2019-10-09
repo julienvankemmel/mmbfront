@@ -12,6 +12,15 @@
           <div class="text-orange tail-po bol">
             {{user.username}}
           </div>
+        </div><br>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR BUTTONS -->
+        <!--<div class="profile-userbuttons">-->
+        <!--	<button type="button" class="btn btn-success btn-sm">Follow</button>-->
+        <!--	<button type="button" class="btn btn-danger btn-sm">Message</button>-->
+        <!--</div>-->
+        <!-- END SIDEBAR BUTTONS -->
+        <!-- SIDEBAR MENU -->
         </div>
         <br>
         <ul class="nav row">
@@ -20,7 +29,7 @@
             <li>
               <i class="fa fa-user text-orange"></i>
               <a href="#" class="text-raisin tail-po" [routerLink]="['../profileform', user.id]">
-                MODIFIER PROFIL
+                MODIFIER
               </a>
             </li>
           </div>
@@ -34,16 +43,16 @@
           </div>
           <div class="col-2">
             <li>
-              <i class="fa fa-suitcase text-orange"></i>
-              <a href="#" class="text-raisin tail-po">
-                BACKPACK
+                <img class="img-bb" src="{{ 'assets/img/backpack.png' }}">
+                <a href="#" class="text-raisin tail-po" [routerLink]="['../backpackpage', user.id]">
+                BACKPACKS
               </a>
             </li>
           </div>
           <div class="col-2">
             <li>
               <i class="fa fa-plane text-orange"></i>
-              <a href="#" class="text-raisin tail-po">
+              <a href="#" class="text-raisin tail-po" [routerLink]="['../trippage', user.id]">
                 VOYAGES
               </a>
             </li>
@@ -81,6 +90,7 @@
                 </tr>
               </tbody>
             </table>
+            <br>
           </div>
         </div>
       </div>

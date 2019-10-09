@@ -25,6 +25,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FooterComponent } from './footer/footer.component';
+import { BackpackpageComponent } from './backpackpage/backpackpage.component';
+import { BackpackformComponent } from './backpackform/backpackform.component';
+import { TrippageComponent } from './trippage/trippage.component';
+import { TripformComponent } from './tripform/tripform.component';
+// import { AuthGuard } from './auth.guard';
+// import { RedirectionComponent } from './redirection/redirection.component';
+// import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './auth.guard';
 // import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
@@ -55,7 +62,15 @@ import { ArraySortPipe } from './pipes/sort.pipe';
     NavComponent,
     DashboardComponent,
     ShortNumberPipe,
-    ArraySortPipe
+    ArraySortPipe,
+    BackpackpageComponent,
+    BackpackformComponent,
+    TrippageComponent,
+    TripformComponent,
+    /*RedirectionComponent,
+    ProfileComponent,*/
+    DashboardComponent,
+    ShortNumberPipe
   ],
   imports: [
     BrowserModule,
