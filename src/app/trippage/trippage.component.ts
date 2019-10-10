@@ -37,8 +37,8 @@ ngOnInit() {
 */
 this.trip = this.userService.getUserData()
 .subscribe(data => {
-this.trip = data.user.trip;
-console.log(data.user.trip)
+this.trip = data['user'].trip;
+
 this.id;
 });
 

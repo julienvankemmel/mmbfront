@@ -35,6 +35,7 @@ export class BackpackformComponent implements OnInit {
   
   id: any;
   trip: any;
+  user: any;
   
     ngOnInit() {
 
@@ -44,9 +45,7 @@ export class BackpackformComponent implements OnInit {
        */
       this.trip = this.userService.getUserData()
       .subscribe(data => {
-      this.trip = data.user.trip;
-      console.log(data.user.trip)
-
+      this.trip = data['user'].trip;
       this.id;
       });
         

@@ -51,8 +51,7 @@ ngOnInit() {
 */
 this.user = this.userService.getUserData()
 .subscribe(data => {
-this.user = data.user;
-console.log(data.user);
+this.user = data['user'];
 });
 
 // construction du formulaire

@@ -33,10 +33,12 @@ export class NavComponent implements OnInit {
     /**
      * on get les data utilisateurs
      */
-    this.user = this.userService.getUserData()
-    .subscribe(data => {
-      this.user = data['user'];
-    });
+    if(this.isLoggedIn$){
+      this.user = this.userService.getUserData()
+      .subscribe(data => {
+        this.user = data['user'];
+      });
+    }
   }
 
   logOut() {

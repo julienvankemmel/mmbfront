@@ -56,19 +56,22 @@ this.route.params.subscribe( params => this.id = params.id);
     .subscribe(data => {
 
       this.country = data.country;
+      console.log(this.country);
       /**
        * On recherche l'image via le nom de la capital sur unsplash
        */
       this.image = this.countryImageService.getImageByCountry(this.resultat.capital)
       .subscribe(img => {this.image = img['results']['0'];
+
       });
     });
     /**
+     * 
      * Récupération des commentaires
      */
     this.comments = this.commentService.getComment(this.id)
     .subscribe(comments => {this.comments = comments['comment'];
-      console.log(this.comments);
+    console.log(this.comments);
       });
 
   }

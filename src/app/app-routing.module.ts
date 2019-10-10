@@ -11,7 +11,6 @@ import { BackpackpageComponent } from './backpackpage/backpackpage.component';
 import { BackpackformComponent } from './backpackform/backpackform.component';
 import { TrippageComponent } from './trippage/trippage.component';
 import { TripformComponent } from './tripform/tripform.component';
-// import { AuthGuard } from './auth.guard';
 import { AuthGuard } from './auth.guard';
 import { CountryComponent } from './country/country.component';
 import { PostpageComponent } from './postpage/postpage.component';
@@ -27,15 +26,16 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'country/:name/:id', component: CountryComponent},
   
+  
   /**
    * ces pages sont protégées par authguard
    */
-  {path: 'dashboard', component: DashboardComponent,/* canActivate: [AuthGuard],*/ data: {animation: 'profile'}},
-  {path: 'profileform/:id', component: ProfilformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'profileform'}},
-  {path: 'backpackpage/:id', component: BackpackpageComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'backpackpage'}},
-  {path: 'backpackform/:id', component: BackpackformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'backpackform'}},
-  {path: 'trippage/:id', component: TrippageComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'trippage'}},
-  {path: 'tripform/:id', component: TripformComponent,/* canActivate: [AuthGuard]*/ data: {animation: 'tripform'}},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {animation: 'profile'}},
+  {path: 'profileform/:id', component: ProfilformComponent, canActivate: [AuthGuard], data: {animation: 'profileform'}},
+  {path: 'backpackpage/:id', component: BackpackpageComponent, canActivate: [AuthGuard], data: {animation: 'backpackpage'}},
+  {path: 'backpackform/:id', component: BackpackformComponent, canActivate: [AuthGuard], data: {animation: 'backpackform'}},
+  {path: 'trippage/:id', component: TrippageComponent, canActivate: [AuthGuard], data: {animation: 'trippage'}},
+  {path: 'tripform/:id', component: TripformComponent, canActivate: [AuthGuard], data: {animation: 'tripform'}},
   {path: 'profileform/:id', component: ProfilformComponent, canActivate: [AuthGuard], data: {animation: 'profileform'}},
   {path: 'postpage/:id', component: PostpageComponent, canActivate: [AuthGuard], data: {animation: 'postpage'}},
 ];

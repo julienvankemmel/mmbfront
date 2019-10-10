@@ -65,6 +65,7 @@ export class LoginService {
              */
             localStorage.setItem('jwt', data.token);
             this.loggedIn.next(true);
+            
 
           }
         }),
@@ -80,7 +81,7 @@ export class LoginService {
   logout() {
     this.loggedIn.next(false);
     localStorage.removeItem('jwt');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
   /**

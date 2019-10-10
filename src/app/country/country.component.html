@@ -1,6 +1,6 @@
 <header>
   <div class="overlay">
-    <img *ngIf="image; else noImg" src="{{image.urls.raw}}" class="bgImg">
+    <img *ngIf="image; else noImg" src="{{image['urls']['raw']}}" class="bgImg">
     <ng-template #noImg>
       <img src="assets/img/backpack.jpg" alt="" class="bgImg">
     </ng-template>
@@ -129,7 +129,7 @@
     </div>
   </div>
   <ng-template #nobp>
-
+    
     <div class="row mt-3">
       <div class="col-sm-6 my-auto">
         <h1 class="position-absolute text-orange">404 <br>BACKPACK <br> NOT <br> FOUND</h1>
@@ -147,25 +147,26 @@
       </div>
     </div>
   </ng-template>
-  <div class="mt-4 mb-4">
-    <h3 class="text-center mb-3">L'avis de nos backpackers !</h3>
-    <div class="row d-flex justify-content-center mt-2" *ngFor="let comment of comments | sort:'publishDate'">
-      <div class="col-sm-8">
-        <div class="card bg-lightgrey">
-          <div class="card-body row p-3 ">
-            <div class="col-sm-1 my-auto">
-              <img *ngIf='comment.user.avatar; else noAvatar' src="{{comment.user.avatar}}" alt="" class="avatar rounded-circle my-auto mx-auto">
-              <ng-template #noAvatar>
-                  <i class="fa fa-user-circle avft my-auto"></i>
-              </ng-template>
-            </div>
-            <div class="col-sm-10 ml-3">
-              <h5 class="text-orange">{{comment.user.username}}</h5>
-              <p>{{comment.text}}</p>
+  
+  <div class="mt-4 mb-4" *ngIf="comments!=0">
+      <h3 class="text-center mb-3">L'avis de nos backpackers !</h3>
+      <div class="row d-flex justify-content-center mt-2" *ngFor="let comment of comments | sort:'publishDate'">
+        <div class="col-sm-8">
+          <div class="card bg-lightgrey">
+            <div class="card-body row p-3 ">
+              <div class="col-sm-1 my-auto">
+                <img *ngIf='comment.user.avatar; else noAvatar' src="{{comment.user.avatar}}" alt="" class="avatar rounded-circle my-auto mx-auto">
+                <ng-template #noAvatar>
+                    <i class="fa fa-user-circle avft my-auto"></i>
+                </ng-template>
+              </div>
+              <div class="col-sm-10 ml-3">
+                <h5 class="text-orange">{{comment.user.username}}</h5>
+                <p>{{comment.text}}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
+</div>
