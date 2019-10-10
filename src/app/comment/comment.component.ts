@@ -12,10 +12,10 @@ export class CommentComponent implements OnInit {
   
   comment;
   ngOnInit() {
-    this.comment = this.commentService.getComment()
-    .subscribe(data =>{
-      this.comment=data;
-    })
+    // this.comment = this.commentService.getComment()
+    // .subscribe(data =>{
+    //   this.comment=data;
+    // })
   }
 
 }

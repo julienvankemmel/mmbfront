@@ -18,7 +18,6 @@ countryFilter: any = {name: ''};
 
   ngOnInit() {
     this.liste = this.countryListService.getCountryList();
-    console.log(this.liste);
   }
 
  search() {

@@ -25,11 +25,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FooterComponent } from './footer/footer.component';
+import { BackpackpageComponent } from './backpackpage/backpackpage.component';
+import { BackpackformComponent } from './backpackform/backpackform.component';
+import { TrippageComponent } from './trippage/trippage.component';
+import { TripformComponent } from './tripform/tripform.component';
+// import { AuthGuard } from './auth.guard';
+// import { RedirectionComponent } from './redirection/redirection.component';
+// import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './auth.guard';
 // import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { TokenInterceptor } from './token-interceptor';
+import { PostpageComponent } from './postpage/postpage.component';
+import { ArraySortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -53,7 +62,17 @@ import { TokenInterceptor } from './token-interceptor';
     HomeComponent,
     NavComponent,
     DashboardComponent,
-    ShortNumberPipe
+    ShortNumberPipe,
+    ArraySortPipe,
+    BackpackpageComponent,
+    BackpackformComponent,
+    TrippageComponent,
+    TripformComponent,
+    /*RedirectionComponent,
+    ProfileComponent,*/
+    DashboardComponent,
+    ShortNumberPipe,
+    PostpageComponent
   ],
   imports: [
     BrowserModule,

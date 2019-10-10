@@ -4,9 +4,9 @@ import {
   CanActivate,
   Router,
   RouterStateSnapshot } from '@angular/router';
+import { LoginService } from './login.service';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { LoginService } from './login.service';
 
 /**
  * Cette classe permet de contrôler l'accès aux pages

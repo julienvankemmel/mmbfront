@@ -1,40 +1,172 @@
 <header>
-    <div class="overlay">
-      <img *ngIf="image; else noImg" src="{{image.urls.full}}" class="img-fluid bgImg">
-      <ng-template #noImg>
-          <img src="assets/img/backpack.jpg" alt="" class="img-fluid bgImg">
-      </ng-template>
+  <div class="overlay">
+    <img *ngIf="image; else noImg" src="{{image['urls']['raw']}}" class="bgImg">
+    <ng-template #noImg>
+      <img src="assets/img/backpack.jpg" alt="" class="bgImg">
+    </ng-template>
+  </div>
+  <div class="indexDeux h-100">
+    <div class="d-flex text-center h-100">
+      <div class="my-auto mx-auto w-100 text-light display-4">
+        <div class="d-inline">
+          <h1 class="my-auto mx-auto">{{country.name}}<img height="30px" src="{{resultat.flag}}" class="ml-2 my-auto">
+          </h1>
+        </div>
+        <div class="d-inline txt-normal">
+          <p>
+            Capitale : {{resultat.capital}}
+            <B class="text-orange">/</B>
+            Population : {{resultat.population | shortNumber}} habitants
+            <B class="text-orange">/</B>
+            Langage(s)
+            <span *ngFor="let language of resultat.languages">
+              - {{language.name}}
+            </span>
+            <B class="text-orange">/</B>
+            Monnaie(s) :
+            <span *ngFor="let money of resultat.currencies">
+              - {{money.name}} {{money.symbol}}
+            </span>
+            <B class="text-orange">/</B>
+            Indicatif téléphonique :
+            +{{resultat.callingCodes}}
+          </p>
+        </div>
+        <div class="row btm mt-auto">
+          <a class="mt-auto mx-auto" (click)="scrollToElement(backpack)"><i
+              class="fa fa-chevron-down text-light ftnSize"></i></a>
+        </div>
+      </div>
     </div>
-    <div class="container h-100">
-      <div class="d-flex text-center h-100">
-        <div class="my-auto mx-auto w-100 text-light display-4">
-          <div class="d-inline">
-              <h1 class="my-auto mx-auto">{{country.name}}<img height="30px" src="{{resultat.flag}}" class="ml-2 my-auto"></h1>
+  </div>
+</header>
+<div class="container h-100 mt-3" #backpack>
+  <div class="row" *ngIf='country.backpacks !=0; else nobp'>
+    <div class="col-sm-6 my-auto">
+      <h1 class="position-absolute text-orange">NOTRE <br>BACKPACK</h1>
+      <img src="assets/img/vacation.jpg" alt="" class="img-fluid">
+    </div>
+    <div class="col-sm-6">
+      <div class="row" *ngFor="let backpack of country.backpacks">
+        <div class="col-sm-6 pl-0 d-flex align-items-stretch">
+          <div class="card w-100">
+            <div class="card-header bg-orange text-light text-center">
+              Nos sacs conseillés
+            </div>
+            <div class="p-2">
+              <ul *ngFor="let item of backpack.backpackitem">
+                <li *ngIf="item.categoryItem.name=='Sacs'">{{item.name}}</li>
+              </ul>
+            </div>
           </div>
-          <div class="d-inline txt-normal">
-              <p>
-                Capitale : {{resultat.capital}} 
-                <B class="text-orange">/</B> 
-                Population : {{resultat.population | shortNumber}} habitants
-                <B class="text-orange">/</B> 
-                Langage(s)
-                <span *ngFor="let language of resultat.languages">
-                  - {{language.name}} 
-                </span>
-                <B class="text-orange">/</B> 
-                Monnaie(s) :
-                <span *ngFor="let money of resultat.currencies">
-                  - {{money.name}} {{money.symbol}}
-                </span>
-                <B class="text-orange">/</B> 
-                Indicatif téléphonique : 
-                +{{resultat.callingCodes}}
-              </p>
+        </div>
+        <div class="col-sm-6 pr-0 d-flex align-items-stretch">
+          <div class="card w-100">
+            <div class="card-header bg-orange text-light text-center">
+              Documents de voyage
+            </div>
+            <div class="p-2">
+              <ul *ngFor="let item of backpack.backpackitem">
+                <li *ngIf="item.categoryItem.name=='Documents de voyage'">{{item.name}}</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="row mt-3">
+        <table class="table" *ngFor="let backpack of country.backpacks">
+          <thead class="thead-dark" data-toggle="collapse" href="#row1" role="button" aria-expanded="false"
+            aria-controls="collapseExample">
+            <tr>
+              <th>Hygiène et pharmacie</th>
+              <th scope="col"><i class="fa fa-chevron-down text-light"></i></th>
+            </tr>
+          </thead>
+          <tbody class="collapse" id="row1" *ngFor="let item of backpack.backpackitem">
+            <tr *ngIf="item.categoryItem.name=='Hygiène et pharmacie'">
+              <td scope="row">{{item.name}}</td>
+            </tr>
+          </tbody>
+          <thead class="thead-dark" data-toggle="collapse" href="#row2" role="button" aria-expanded="false"
+            aria-controls="collapseExample">
+            <tr>
+              <th>High-Tech</th>
+              <th scope="col"><i class="fa fa-chevron-down text-light"></i></th>
+            </tr>
+          </thead>
+          <tbody class="collapse" id="row2" *ngFor="let item of backpack.backpackitem">
+            <tr *ngIf="item.categoryItem.name=='High-Tech'">
+              <td scope="row">{{item.name}}</td>
+            </tr>
+          </tbody>
+          <thead class="thead-dark" data-toggle="collapse" href="#row3" role="button" aria-expanded="false"
+            aria-controls="collapseExample">
+            <tr>
+              <th>Accessoires</th>
+              <th scope="col"><i class="fa fa-chevron-down text-light"></i></th>
+            </tr>
+          </thead>
+          <tbody class="collapse" id="row3" *ngFor="let item of backpack.backpackitem">
+            <tr *ngIf="item.categoryItem.name=='Accessoires'">
+              <td scope="row">{{item.name}}</td>
+            </tr>
+          </tbody>
+          <thead class="thead-dark" data-toggle="collapse" href="#row4" role="button" aria-expanded="false"
+            aria-controls="collapseExample">
+            <tr>
+              <th>Vêtements</th>
+              <th scope="col"><i class="fa fa-chevron-down text-light"></i></th>
+            </tr>
+          </thead>
+          <tbody class="collapse" id="row4" *ngFor="let item of backpack.backpackitem">
+            <tr *ngIf="item.categoryItem.name=='Vêtements'">
+              <td scope="row">{{item.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <ng-template #nobp>
+    
+    <div class="row mt-3">
+      <div class="col-sm-6 my-auto">
+        <h1 class="position-absolute text-orange">404 <br>BACKPACK <br> NOT <br> FOUND</h1>
+        <img src="assets/img/vacation.jpg" alt="" class="img-fluid">
+      </div>
+      <div class="col-sm-6  my-auto">
+        <div class="alert alert-danger" role="alert">
+          <p>
+            Aucun backpack n'a été créé par notre admin pour ce pays !<br>
+            Nos admins travaillent 24h/24h 7j/7j pour vous proposez le meilleur contenu,
+            revenez dans quelques jours, votre backpack sera prêt !<br><br>
+            La Team MMB.
+          </p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  
+  <div class="mt-4 mb-4" *ngIf="comments!=0">
+      <h3 class="text-center mb-3">L'avis de nos backpackers !</h3>
+      <div class="row d-flex justify-content-center mt-2" *ngFor="let comment of comments | sort:'publishDate'">
+        <div class="col-sm-8">
+          <div class="card bg-lightgrey">
+            <div class="card-body row p-3 ">
+              <div class="col-sm-1 my-auto">
+                <img *ngIf='comment.user.avatar; else noAvatar' src="{{comment.user.avatar}}" alt="" class="avatar rounded-circle my-auto mx-auto">
+                <ng-template #noAvatar>
+                    <i class="fa fa-user-circle avft my-auto"></i>
+                </ng-template>
+              </div>
+              <div class="col-sm-10 ml-3">
+                <h5 class="text-orange">{{comment.user.username}}</h5>
+                <p>{{comment.text}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </header>
-  <div class="container">
-
-  </div>
+</div>

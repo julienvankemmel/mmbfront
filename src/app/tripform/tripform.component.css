@@ -1,0 +1,31 @@
+.form-control:focus {
+    border-color: rgb(255, 102, 0);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(255, 102, 0);
+  }
+
+button {
+background-color: #ff6600;
+color: #F9F9F9;
+}
+
+button:hover {
+background-color: #ff6600;
+color: #F9F9F9;
+}
+
+.fa
+{
+font-size: 40px;
+}
+
+textarea {
+  border-color: #CED4DA;
+  border-radius: 5px;
+}
+
+textarea:focus {
+  outline-color: rgb(255, 102, 0);
+  border:none;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(255, 102, 0);
+  border-radius: 5px;
+}

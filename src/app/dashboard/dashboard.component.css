@@ -139,3 +139,10 @@ img {
 .bor-tab {
   border-color: #C1C1C1;
 }
+
+.img-bb {
+  width: 18px;
+  height: 18px;
+  margin-bottom: 5px;
+}
+

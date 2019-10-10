@@ -58,8 +58,9 @@ export class TripService {
    * @param trip
    * méthode pour insérer un employé 
    */
-  addTrip(trip): Observable<any> {
-    let url = 'http://127.0.0.1:8000/api/trips/';
+  addTrip(trip, idCountry, idUser): Observable<any> {
+    let url = 'http://127.0.0.1:8000/trip/new/' + idCountry + '/' + idUser;
+    console.log(url);
     return this.http.post<any>(url, trip, { responseType: 'json' })
       .pipe(
         tap((data) => console.log(data)),

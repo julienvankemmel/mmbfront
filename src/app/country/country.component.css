@@ -11,10 +11,8 @@ header {
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
+    max-width: 100%;
+    overflow: hidden;
     z-index: 0;
     -ms-transform: translateX(-50%) translateY(-50%);
     -moz-transform: translateX(-50%) translateY(-50%);
@@ -46,3 +44,27 @@ header {
   .txt-normal{
       font-size: 25px;
   }
+.indexDeux{
+  position: relative;
+  z-index:2;
+  text-shadow: 1px 1px 2px black; 
+  padding:20px;
+}
+.ftnSize{
+  font-size:30px!important;
+}
+.btm{
+  position: absolute;
+  top:90%;
+  left:50%;
+}
+.fa-chevron-down{
+  cursor:pointer;
+}
+.avatar{
+  height:60px;
+  width:60px;
+}
+.avft{
+  font-size:55px;
+}
