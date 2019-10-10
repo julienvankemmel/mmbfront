@@ -11,10 +11,10 @@ import { CountryListService } from '../country-list.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  
+
 constructor(public http: HttpClient, public router: Router, public countryListService: CountryListService) {}
 liste;
-countryFilter: any = {"name": ''};
+countryFilter: any = {name: ''};
 
   ngOnInit() {
     this.liste = this.countryListService.getCountryList();
@@ -22,7 +22,7 @@ countryFilter: any = {"name": ''};
   }
 
  search() {
-    document.getElementById("btn").click();
+    document.getElementById('btn').click();
 }
   ngOnDestroy() {}
 }

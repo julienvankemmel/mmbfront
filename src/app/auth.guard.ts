@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { LoginService } from './login.service';
 
-
 /**
  * Cette classe permet de contrôler l'accès aux pages
  * en ajoutant l'options canActivate: [AuthGuard] aux routes
