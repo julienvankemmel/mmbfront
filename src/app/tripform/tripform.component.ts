@@ -89,17 +89,7 @@ id: any;
 
 
 ngOnInit() {
-
   this.liste = this.countryListService.getCountryList();
-/**
-* affichage des datas de l'utilisateur (pour test)
-*/
-/*this.user = this.loginService.getUserData()
-.subscribe(data => {
-this.user = data.user;
-console.log(data.user.id);
-});*/
-
 }
 
 onSubmit() {

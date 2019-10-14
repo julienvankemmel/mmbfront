@@ -1,1 +1,53 @@
-<p>backpack-item works!</p>
+<div class="container mt-5">
+    <div class="row mt-5">
+        <div class="col-sm-6 mt-5">
+                <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th>Hygiène et pharmacie</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let item of backpack.backpack.backpackitem">
+                          <tr *ngIf="item.categoryItem.name=='Hygiène et pharmacie'">
+                            <td scope="row">{{item.name}}</td>
+                          </tr>
+                        </tbody>
+                        <thead class="thead-dark">
+                          <tr>
+                            <th>High-Tech</th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let item of backpack.backpack.backpackitem">
+                          <tr *ngIf="item.categoryItem.name=='High-Tech'">
+                            <td scope="row">{{item.name}}</td>
+                          </tr>
+                        </tbody>
+                        <thead class="thead-dark">
+                          <tr>
+                            <th>Accessoires</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody  *ngFor="let item of backpack.backpack.backpackitem">
+                          <tr *ngIf="item.categoryItem.name=='Accessoires'">
+                            <td scope="row">{{item.name}}</td>
+                          </tr>
+                        </tbody>
+                        <thead class="thead-dark" >
+                          <tr>
+                            <th>Vêtements</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let item of backpack.backpack.backpackitem">
+                          <tr *ngIf="item.categoryItem.name=='Vêtements'">
+                            <td scope="row">{{item.name}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+        </div>
+        <div class="col-sm-6"></div>
+    </div>
+</div>

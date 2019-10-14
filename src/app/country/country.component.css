@@ -68,3 +68,9 @@ header {
 .avft{
   font-size:55px;
 }
+.scroll{
+  height:100px;
+}
+.my-pagination /deep/ .ngx-pagination .current {
+  background: #ff6600;
+}
