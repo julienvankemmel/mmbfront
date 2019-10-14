@@ -28,6 +28,7 @@ const routes: Routes = [
   {path: 'country/:name/:id', component: CountryComponent},
   
   
+  
   /**
    * ces pages sont protégées par authguard
    */
