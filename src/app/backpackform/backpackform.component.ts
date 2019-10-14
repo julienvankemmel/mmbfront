@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
 import { BackpackService } from '../backpack.service';
@@ -23,8 +23,12 @@ export class BackpackformComponent implements OnInit {
   
 
             // construction du formulaire
-            //this.backpackform = new FormGroup({
-            //  });
+            this.backpackForm = new FormGroup({
+
+              name: new FormControl('', Validators.minLength(2)),
+
+
+              });
 
               
       /**
@@ -49,5 +53,13 @@ export class BackpackformComponent implements OnInit {
       this.id;
       });
         
+  }
+
+  createItem(): FormGroup {
+    return this.formItem.group({
+
+      item: new FormControl('', Validators.minLength(2)),
+      
+    });
   }
 }

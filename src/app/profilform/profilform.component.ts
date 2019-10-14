@@ -1,9 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-profilform',
@@ -12,6 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProfilformComponent implements OnInit {
 
+  
   constructor( private userService: UserService,
                private route: ActivatedRoute, private router: Router ) {
 
@@ -108,7 +111,6 @@ this.route.params.subscribe( params => this.id = params.id);
        },
        error => {
          this.error = error;
-
        }
      );
 
