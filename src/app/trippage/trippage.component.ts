@@ -4,6 +4,7 @@ import { Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
+import { TripService } from '../trip.service';
 
 
 @Component({
@@ -13,10 +14,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TrippageComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private userService: UserService,
-    private route: ActivatedRoute) {
-    this.route.params.subscribe(params => this.id = params.id);
-  }
+  constructor( private loginService: LoginService, private userService: UserService,
+    private route: ActivatedRoute, private tripService: TripService) {
+      this.route.params.subscribe( params => this.id = params.id);
+    }
+
 
 
 
@@ -90,5 +92,23 @@ export class TrippageComponent implements OnInit {
     );
 
   }
+
+
+
+deleteTrip(id){
+  this.tripService.deleteTrip(id).subscribe(
+    value=>{
+      this.trip = this.userService.getUserData()
+      .subscribe(data => {
+      this.trip = data['user'].trip;
+    
+      this.id;
+      });
+    
+    
+  
+    });
+
+}
 
 }

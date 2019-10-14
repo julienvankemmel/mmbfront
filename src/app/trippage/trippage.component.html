@@ -5,7 +5,7 @@
     </h1><br><br>
         <div class="card text-center mb-5" *ngFor="let card of trip">
             <div class="card-header bg-rb wi bor">
-               <span>{{card.name}}</span>
+               <h3><span>{{card.name}}</span></h3>
             </div>
             <div class="card-body bg-rb">
                 <div class="row">
@@ -27,11 +27,21 @@
                     <span class="d-inline" >
                         {{country.name}} <span *ngIf="i<card.countries.length-1" class="bo">/ </span>     
                     </span>
+                    <div class=" row">
+                        <a class="nav-link ml-auto" data-toggle="tooltip" data-placement="top" title='Modifier "{{card.name}}"' [routerLink]="[]"><i class="fa fa-edit text-orange bout-modif"></i></a>
+                        <div>
+                            <a class="nav-link" data-toggle="tooltip" data-placement="top" title='Supprimer "{{card.name}}"' (click)="deleteTrip(card.id)"><i class="fa fa-trash text-orange bout-modif"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Créer un voyage" [routerLink]="['../../tripform',id]"><i class="fa fa-plus-circle text-orange"></i></a>
-        <a class="nav-link text-right" data-toggle="tooltip" data-placement="top" title="Retour au profil" routerLink='../../dashboard'><i class="fa fa-angle-up text-orange"></i></a>
+        <div class="row">
+            <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Créer un voyage" [routerLink]="['../../tripform',id]"><i class="fa fa-plus-circle text-orange"></i></a>
+        </div>
+        <div class="row">
+            <a class="nav-link ml-auto" data-toggle="tooltip" data-placement="top" title="Retour au profil" routerLink='../../dashboard'><i class="fa fa-angle-up text-orange"></i></a>
+        </div>
 </div>
   
   

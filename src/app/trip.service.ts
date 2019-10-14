@@ -26,7 +26,7 @@ export class TripService {
  * 
  * @param trip
  * @param id 
- * méthode pour mettre un employé par son ID
+ * méthode pour mettre un voyage par son ID
  */
   putTrip(trip, id): Observable<any> {
     const url = 'http://127.0.0.1:8000/api/trips/' + id;
@@ -41,10 +41,10 @@ export class TripService {
   /**
    * 
    * @param id 
-   * méthode pour supprimer un employé par son ID
+   * méthode pour supprimer un voyage par son ID
    */
   deleteTrip(id): Observable<any> {
-    const url = 'http://127.0.0.1:8000/api/trips/' + id;
+    const url = 'http://127.0.0.1:8000/trip/delete/' + id;
     console.log(url);
     return this.http.delete<any>(url, id)
       .pipe(
@@ -56,7 +56,7 @@ export class TripService {
   /**
    * 
    * @param trip
-   * méthode pour insérer un employé 
+   * méthode pour insérer un voyage 
    */
   addTrip(trip, idCountry, idUser): Observable<any> {
     let url = 'http://127.0.0.1:8000/trip/new/' + idCountry + '/' + idUser;
