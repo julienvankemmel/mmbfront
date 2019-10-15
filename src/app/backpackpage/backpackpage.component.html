@@ -1,40 +1,32 @@
 <br><br>
 <div class="container mt-5">
-    <h1 class="text-center mt-5 text-raisin">
-        MES BACKPACKS
-    </h1><br><br>
-        <div class="card text-center">
-            <div class="card-header bg-rb wi bor">
-                NOM BACKPACK 
-                <span class="bo">/</span> 
-                PAYS
-            </div>
-            <div class="card-body bg-rb">
-                <div class="row">
-                    <div class="col bo">
-                        VÊTEMENTS
-                    </div>
-                    <div class="col bo">
-                        PAPIERS
-                    </div>
-                    <div class="col bo">
-                        ACCESSOIRS
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer bg-rb wi bor">
-                <div class="row">
-                    <div class="col">
-                        Date de création :
-                    </div>
-                    <div class="col">
-                        Dernière modification :
-                    </div>
-                </div>
-            </div>
+  <h1 class="text-center mt-5 text-raisin">
+    MES BACKPACKS
+  </h1>
+  <div class="row">
+    <div class="col-sm-4" *ngFor="let backpack of user.backpack; let i=index">
+      <div class="card bg-dark text-light" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{backpack.name}} </h5>
+          <p>{{backpack.publishedDate | date:"dd/MM/yyyy"}}</p>
+          <div class="d-inline">
+
+              <a class="btn bg-orange text-light" [routerLink]="['/backpack',user.id, backpack.id]">Ajoutez des objets </a>
+              <a  class="ml-2" data-toggle="tooltip" data-placement="top">
+                  <i class="fa fa-trash text-orange bout-modif" style="font-size:20px;" (click)="deleteBackpack(backpack.id)"></i></a>
+          </div>
         </div>
-        <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Créer un backpack" [routerLink]="['../../backpackform', user.id]"><i class="fa fa-plus-circle text-orange"></i></a>
-        <a class="nav-link text-right" data-toggle="tooltip" data-placement="top" title="Retour au profil" routerLink='../../dashboard'><i class="fa fa-angle-up text-orange"></i></a>
+      </div>
+    </div>
+  </div>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link mr-auto" data-toggle="tooltip" data-placement="top" title="Créer un backpack"
+        [routerLink]="['../../backpackform', user.id]"><i class="fa fa-plus-circle text-orange"></i></a>
+    </li>
+    <li class="nav-item ml-auto">
+      <a class="nav-link text-right" data-toggle="tooltip" data-placement="top" title="Retour au profil"
+        routerLink='../../dashboard'><i class="fa fa-angle-up text-orange"></i></a>
+    </li>
+  </ul>
 </div>
-  
-  

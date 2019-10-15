@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-center mt-5">
-    <div class="col-md-6 bg-lightgrey mt-5">
+    <div class="col-md-6 bg-lightgrey mt-5 p-5">
       <h1 class="text-center mt-5 text-raisin">AJOUTER UN VOYAGE</h1>
       <form class="mt-5" [formGroup]="tripForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -42,7 +42,7 @@
         </div>
         <div class="form-group">
             <label for="" class="text-raisin">Description du voyage</label><br>
-            <textarea id="content" cols="72" rows="5" placeholder="" value="" formControlName="content"></textarea>
+            <textarea id="content"  rows="5" placeholder="" value="" formControlName="content" class="w-100"></textarea>
         </div>      
         <div class="text-center">
           <button type="submit" class="register btn mt-5" [disabled]="!tripForm.valid">Créer mon voyage</button>

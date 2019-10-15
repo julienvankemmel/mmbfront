@@ -1,47 +1,57 @@
 <br><br>
 <div class="container mt-5">
-    <h1 class="text-center mt-5 text-raisin">
-        MES VOYAGES
-    </h1><br><br>
-        <div class="card text-center mb-5" *ngFor="let card of trip">
-            <div class="card-header bg-rb wi bor">
-               <h3><span>{{card.name}}</span></h3>
-            </div>
-            <div class="card-body bg-rb">
-                <div class="row">
-                    <div class="col bo">
-                        Date de départ <br>
-                        <span class="wi">{{card.startDate | date:'dd/MM/yyyy':'GMT+2'}}</span>
-                    </div>
-                    <div class="col bo">
-                        Date de retour <br>
-                        <span class="wi">{{card.endDate | date:'dd/MM/yyyy':'GMT+2'}}</span>
-                    </div>
-                </div><br>
-                <div class="row">
-                    <div class="col wi">{{card.content}}</div>
-                </div>
-            </div>
-            <div class="card-footer bg-rb wi bor">
-                <div class="row mx-auto d-inline" *ngFor="let country of card.countries; let i=index" >
-                    <span class="d-inline" >
-                        {{country.name}} <span *ngIf="i<card.countries.length-1" class="bo">/ </span>     
-                    </span>
-                    <div class=" row">
-                        <a class="nav-link ml-auto" data-toggle="tooltip" data-placement="top" title='Modifier "{{card.name}}"' [routerLink]="[]"><i class="fa fa-edit text-orange bout-modif"></i></a>
-                        <div>
-                            <a class="nav-link" data-toggle="tooltip" data-placement="top" title='Supprimer "{{card.name}}"' (click)="deleteTrip(card.id)"><i class="fa fa-trash text-orange bout-modif"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <h1 class="text-center mt-5 text-raisin">
+    MES VOYAGES
+  </h1><br><br>
+  <div class="row">
+
+    <div class="card text-center mb-5 col-sm-4 bg-rb m-2" *ngFor="let card of trip">
+      <div class="card-header  text-light bor">
+        <h3><span>{{card.name}}</span></h3>
+      </div>
+      <div class="card-body bg-rb">
         <div class="row">
-            <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Créer un voyage" [routerLink]="['../../tripform',id]"><i class="fa fa-plus-circle text-orange"></i></a>
-        </div>
+          <div class="col bo">
+            Date de départ <br>
+            <span class="wi">{{card.startDate | date:'dd/MM/yyyy':'GMT+2'}}</span>
+          </div>
+          <div class="col bo">
+            Date de retour <br>
+            <span class="wi">{{card.endDate | date:'dd/MM/yyyy':'GMT+2'}}</span>
+          </div>
+        </div><br>
         <div class="row">
-            <a class="nav-link ml-auto" data-toggle="tooltip" data-placement="top" title="Retour au profil" routerLink='../../dashboard'><i class="fa fa-angle-up text-orange"></i></a>
+          <div class="col wi">{{card.content}}<br></div>
+          
         </div>
+      </div>
+      <div class="card-footer bg-rb wi bor">
+        <div class="row mx-auto d-inline" *ngFor="let country of card.countries; let i=index">
+          <span class="d-inline">
+            {{country.name}} <span *ngIf="i<card.countries.length-1" class="bo">/ </span>
+          </span>
+          <div class=" row">
+
+            <div>
+              <a class="nav-link" data-toggle="tooltip" data-placement="top" title='Supprimer "{{card.name}}"'
+                (click)="deleteTrip(card.id)"><i class="fa fa-trash text-orange bout-modif"></i></a>
+            </div>
+            <a class="text-orange mt-2 ml-auto" [routerLink]="['/backpackform',id]">Ajouter un backpack</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Créer un voyage"
+        [routerLink]="['../../tripform',id]"><i class="fa fa-plus-circle text-orange"></i></a>
+    </li>
+    <li class="nav-item ml-auto">
+      <a class="nav-link ml-auto" data-toggle="tooltip" data-placement="top" title="Retour au profil"
+        routerLink='../../dashboard'><i class="fa fa-angle-up text-orange"></i></a>
+    </li>
+  </ul>
+
 </div>
-  
-  

@@ -54,7 +54,7 @@ export class BackpackService {
    * méthode pour supprimer un employé par son ID
    */
   deleteBackpack(id): Observable<any> {
-    const url = 'http://127.0.0.1:8000/api/backpacks/' + id;
+    const url = 'http://127.0.0.1:8000/backpack/delete/' + id;
     console.log(url);
     return this.http.delete<any>(url, id)
       .pipe(

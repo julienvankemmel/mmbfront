@@ -16,4 +16,6 @@ button:hover {
 .bor {
   border-color: #c1c1c1;
 }
-
+i{
+  cursor:pointer;
+}

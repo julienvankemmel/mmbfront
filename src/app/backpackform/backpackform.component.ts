@@ -3,7 +3,7 @@ import { Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
 import { BackpackService } from '../backpack.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 
 
@@ -24,7 +24,7 @@ export class BackpackformComponent implements OnInit {
   titleForm: any;
 
     constructor(private loginService: LoginService, private userService: UserService,
-                private route: ActivatedRoute, private formBuilder: FormBuilder, private backpackService: BackpackService) {
+                private route: ActivatedRoute, private formBuilder: FormBuilder, private backpackService: BackpackService, private router:Router) {
 
             // construction du formulaire
             this.backpackForm = this.formBuilder.group({
@@ -78,6 +78,8 @@ selectChangeHandler(event: any) {
         response => {
 
           this.response = response.message;
+
+          this.router.navigate(['backpackpage/'+this.id]);
 
         },
         error => {

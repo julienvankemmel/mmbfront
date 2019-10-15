@@ -3,12 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
-<<<<<<< HEAD
 import { ActivatedRoute, Router } from '@angular/router';
-=======
-import { ActivatedRoute } from '@angular/router';
 import { TripService } from '../trip.service';
->>>>>>> da7ba917e9edd3af6bee9b246d22dc9b667a6248
 
 
 @Component({
@@ -19,31 +15,14 @@ import { TripService } from '../trip.service';
 export class TrippageComponent implements OnInit {
 
   constructor( private loginService: LoginService, private userService: UserService,
-<<<<<<< HEAD
-               private route: ActivatedRoute, private router: Router ) {
-=======
-    private route: ActivatedRoute, private tripService: TripService) {
->>>>>>> da7ba917e9edd3af6bee9b246d22dc9b667a6248
+               private route: ActivatedRoute, private router: Router, private tripService: TripService) {
       this.route.params.subscribe( params => this.id = params.id);
     }
 
 
 
-
-
-  profileForm: FormGroup;
-  loading: boolean;
-  error: string;
-  trip: any;
-  id: any;
-
-  private imageSrc = '';
-
-
-/**
- * affichage des datas de l'utilisateur (pour test)
- */
-this.trip = this.userService.getUserData()
+ngOnInit(){
+  this.trip = this.userService.getUserData()
 .subscribe(data => {
 
 this.trip = data['user'].trip;
@@ -62,7 +41,6 @@ error => {
     });
 
         this.id;
-      });
 
     // construction du formulaire
     this.profileForm = new FormGroup({
@@ -72,7 +50,22 @@ error => {
       email: new FormControl(''),
       avatar: new FormControl('')
     });
-  }
+
+}
+
+  profileForm: FormGroup;
+  loading: boolean;
+  error: string;
+  trip: any;
+  id: any;
+
+  private imageSrc = '';
+
+
+/**
+ * affichage des datas de l'utilisateur (pour test)
+ */
+
 
   onFileSelect(e) {
     const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
@@ -121,8 +114,6 @@ deleteTrip(id){
       this.trip = this.userService.getUserData()
       .subscribe(data => {
       this.trip = data['user'].trip;
-    
-      this.id;
       });
     
     

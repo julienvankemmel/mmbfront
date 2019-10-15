@@ -19,6 +19,9 @@ export class BackpackItemComponent implements OnInit {
   error: any;
   loading: boolean;
   categories: any;
+  nameItem: any;
+  categoryId: any;
+  form: { "name": string; "category": string; };
   constructor(private backpackItemService: BackpackItemService, private backpackService: BackpackService, private route: ActivatedRoute, private itemService: BackpackItemService, private categoryService:CategoryItemService) {
     //récupétation ID user
     this.route.params.subscribe(params => this.user = params.name);
@@ -38,6 +41,7 @@ export class BackpackItemComponent implements OnInit {
     this.backpack = this.backpackService.getBackpackById(this.id)
       .subscribe(data => {
         this.backpack = data;
+        console.log('premier');
         console.log(this.backpack)
       });
       /**
@@ -46,6 +50,7 @@ export class BackpackItemComponent implements OnInit {
       this.categories = this.categoryService.getCategoryItem()
         .subscribe(categories =>{
           this.categories = categories;
+          console.log('deuxieme');
           console.log(this.categories);
         })
     /**
@@ -59,9 +64,16 @@ export class BackpackItemComponent implements OnInit {
 
   //envoie du formulaire
   onSubmit() {
-    let form = JSON.stringify(this.itemForm.value);
+    this.nameItem = this.itemForm.value.name;
+    this.categoryId = this.itemForm.value.category;
+    this.form = {
+      "name":this.nameItem,
+      "category":this.categoryId
+    }
+    console.log(this.form);
 
-    this.itemService.addBackpackItem(form, this.user, this.id).subscribe(
+
+    this.itemService.addBackpackItem(this.form, this.user, this.id).subscribe(
       
       // traitement de la réponse HTTP, en cas d'erreur on affiche
       // l'erreur dans la vue
