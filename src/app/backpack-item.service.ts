@@ -42,7 +42,7 @@ export class BackpackItemService {
    * méthode pour supprimer un employé par son ID
    */
   deleteBackpackItem(id): Observable<any> {
-    const url = 'http://127.0.0.1:8000/api/backpack_items/' + id;
+    const url = 'http://127.0.0.1:8000/backpackitem/' + id;
     console.log(url);
     return this.http.delete<any>(url, id)
       .pipe(
@@ -56,11 +56,11 @@ export class BackpackItemService {
    * @param backpackItem
    * méthode pour insérer un employé 
    */
-  addBackpackItem(backpackItem): Observable<any> {
-    let url = 'http://127.0.0.1:8000/api/backpack_items/';
+  addBackpackItem(backpackItem, userId, backpackId): Observable<any> {
+    let url = 'http://127.0.0.1:8000/backpackitem/new/'+userId+'/'+backpackId;
     return this.http.post<any>(url, backpackItem, { responseType: 'json' })
       .pipe(
-        tap((data) => console.log(data)),
+        tap((data) => data),
         catchError(this.handleError<any>('addbackpackItem'))
       );
   }

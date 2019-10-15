@@ -25,15 +25,15 @@ export class CommentService {
   }
 
   /**
-   * @param comment
-   * @param id
+   * @param countryId
+   * @param userId
    */
-  putComment(comment, id): Observable<any> {
-    const url = 'http://127.0.0.1:8000/api/comments' + id;
+  putComment(comment, countryId, userId): Observable<any> {
+    const url = 'http://127.0.0.1:8000/comment/new/' + countryId + '/' + userId;
     console.log(url);
-    return this.http.put<any>(url, comment, { responseType: 'json' })
+    return this.http.post<any>(url, comment, { responseType: 'json' })
       .pipe(
-        tap(data => console.log(data)),
+        tap(data => data),
         catchError(this.handleError<any>('putComment'))
       );
 }

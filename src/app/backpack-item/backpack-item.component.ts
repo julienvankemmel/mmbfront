@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BackpackItemService } from '../backpack-item.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { BackpackService } from '../backpack.service';
+import { CategoryItemService } from '../category-item.service';
 
 @Component({
   selector: 'app-backpack-item',
@@ -7,14 +12,76 @@ import { BackpackItemService } from '../backpack-item.service';
   styleUrls: ['./backpack-item.component.css']
 })
 export class BackpackItemComponent implements OnInit {
-
-  constructor(private backpackItemService : BackpackItemService) { }
-  backpackItem;
-  ngOnInit() {
-    this.backpackItem = this.backpackItemService.getBackpackItem()
-    .subscribe(data =>{
-      this.backpackItem=data;
-    })
+  user: any;
+  id: any;
+  backpack: any;
+  itemForm: FormGroup;
+  error: any;
+  loading: boolean;
+  categories: any;
+  constructor(private backpackItemService: BackpackItemService, private backpackService: BackpackService, private route: ActivatedRoute, private itemService: BackpackItemService, private categoryService:CategoryItemService) {
+    //récupétation ID user
+    this.route.params.subscribe(params => this.user = params.name);
+    //récupération ID backpack
+    this.route.params.subscribe(params => this.id = params.id);
   }
-  
+
+  //getter form
+  get name() { return this.itemForm.get('name'); }
+  get category() { return this.itemForm.get('category'); }
+
+
+  ngOnInit() {
+    /**
+     * On récupére les datas user pour accéder à ses backpacks
+     */
+    this.backpack = this.backpackService.getBackpackById(this.id)
+      .subscribe(data => {
+        this.backpack = data;
+        console.log(this.backpack)
+      });
+      /**
+       * On récupére les categories
+       */
+      this.categories = this.categoryService.getCategoryItem()
+        .subscribe(categories =>{
+          this.categories = categories;
+          console.log(this.categories);
+        })
+    /**
+     * On créé le rendu du form
+     */
+    this.itemForm = new FormGroup({
+      name: new FormControl('', Validators.minLength(1)),
+      category: new FormControl(''),
+    });
+  }
+
+  //envoie du formulaire
+  onSubmit() {
+    let form = JSON.stringify(this.itemForm.value);
+
+    this.itemService.addBackpackItem(form, this.user, this.id).subscribe(
+      
+      // traitement de la réponse HTTP, en cas d'erreur on affiche
+      // l'erreur dans la vue
+      value => {
+        this.loading = false;
+        this.backpack = this.backpackService.getBackpackById(this.id)
+          .subscribe(data => {
+            this.backpack = data;
+            console.log(this.backpack)
+          });
+
+        document.getElementById("itemForm").reset();
+
+      },
+      error => {
+        this.error = error;
+        console.log(error);
+
+        this.loading = false;
+      }
+    );
+  }
 }

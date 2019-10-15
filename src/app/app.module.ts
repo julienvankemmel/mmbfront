@@ -39,6 +39,8 @@ import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { TokenInterceptor } from './token-interceptor';
 import { PostpageComponent } from './postpage/postpage.component';
 import { ArraySortPipe } from './pipes/sort.pipe';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,7 @@ import { ArraySortPipe } from './pipes/sort.pipe';
     ShortNumberPipe,
     PostpageComponent
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -83,6 +86,9 @@ import { ArraySortPipe } from './pipes/sort.pipe';
     RecaptchaModule,
     RecaptchaFormsModule,
     AppRoutingModule,
+    ScrollingModule,
+    NgxPaginationModule,
+    
     // Ng2SearchPipeModule
     // AngularFontAwesomeModule
     FilterPipeModule
