@@ -68,8 +68,8 @@ export class BackpackService {
    * @param backpack
    * méthode pour insérer un employé
    */
-  addBackpack(backpack: any): Observable<any> {
-    let url = 'http://127.0.0.1:8000/api/login_check';
+  addBackpack(backpack: any, trip, id): Observable<any> {
+    const url = 'http://127.0.0.1:8000/backpack/new/' + trip + '/' + id;
     return this.http.post<any>(url, backpack, { responseType: 'json' })
       .pipe(
         tap((backpack) => backpack),

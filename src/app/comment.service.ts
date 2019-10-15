@@ -11,14 +11,14 @@ export class CommentService {
   constructor(private http:HttpClient) {}
 
   getComment(id):Observable<any[]>{
-    return this.http.get<any[]>('http://127.0.0.1:8000/comment/'+id)
+    return this.http.get<any[]>('http://127.0.0.1:8000/comment/' + id)
     .pipe(
       tap(data => data)
     )
   }
 
   getCommentById(id): Observable<any>{
-    return this.http.get<any>('http://127.0.0.1:8000/api/comments'+id)
+    return this.http.get<any>('http://127.0.0.1:8000/api/comments' + id)
     .pipe(
       tap(data => data)
     )

@@ -37,6 +37,7 @@ export class LoginService {
     return this.loggedIn.asObservable();
   }
 
+  
   /**
    * cette fonction permet de garder loogedIn à true
    * tant que le jwt est en mémoire
@@ -65,7 +66,6 @@ export class LoginService {
              */
             localStorage.setItem('jwt', data.token);
             this.loggedIn.next(true);
-            
 
           }
         }),

@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TrippageComponent implements OnInit {
 
   constructor( private loginService: LoginService, private userService: UserService,
-    private route: ActivatedRoute ) {
+               private route: ActivatedRoute, private router: Router ) {
       this.route.params.subscribe( params => this.id = params.id);
     }
 
@@ -33,14 +33,25 @@ private imageSrc = '';
 ngOnInit() {
 
 /**
-* affichage des datas de l'utilisateur (pour test)
-*/
+ * affichage des datas de l'utilisateur (pour test)
+ */
 this.trip = this.userService.getUserData()
 .subscribe(data => {
+
 this.trip = data['user'].trip;
 
-this.id;
-});
+},
+error => {
+  /**
+   * erreur 401 indique que le jwt est expiré
+   * on redirige vers le login
+   */
+  if (error === 401) {
+    localStorage.removeItem('jwt');
+    this.router.navigate(['login']);
+
+      }
+    });
 
 // construction du formulaire
 this.profileForm = new FormGroup({

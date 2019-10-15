@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, interval } from 'rxjs';
 import { UserService } from '../user.service';
 
 @Component({
@@ -20,9 +20,11 @@ export class NavComponent implements OnInit {
    * on déclare la variable isLoggedIn
    */
   isLoggedIn$: Observable<boolean>;
+  user: any;
+ 
 
   constructor(private loginService: LoginService, private router: Router, private userService: UserService) { }
-  user;
+
   ngOnInit() {
     /**
      * on vérifie l'état (true/false) de get isLoggedIn
@@ -30,15 +32,17 @@ export class NavComponent implements OnInit {
      */
     this.isLoggedIn$ = this.loginService.isLoggedIn;
 
+
     /**
      * on get les data utilisateurs
      */
-    if(this.isLoggedIn$){
+    if (this.isLoggedIn$) {
       this.user = this.userService.getUserData()
       .subscribe(data => {
         this.user = data['user'];
       });
     }
+
   }
 
   logOut() {

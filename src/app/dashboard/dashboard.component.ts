@@ -39,7 +39,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
       localStorage.removeItem('jwt');
       this.router.navigate(['login']);
-    }
+
+        }
 
   });
 

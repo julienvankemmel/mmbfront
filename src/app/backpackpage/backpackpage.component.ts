@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { UserService } from '../user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-backpackpage',
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class BackpackpageComponent implements OnInit {
 
   constructor( private loginService: LoginService, private userService: UserService,
-    private route: ActivatedRoute ) {
+    private route: ActivatedRoute, private router: Router ) {
 
 
 /**
@@ -52,7 +52,19 @@ ngOnInit() {
 this.user = this.userService.getUserData()
 .subscribe(data => {
 this.user = data['user'];
-});
+console.log(this.user);
+},
+error => {
+  /**
+   * erreur 401 indique que le jwt est expiré
+   * on redirige vers le login
+   */
+  if (error === 401) {
+    localStorage.removeItem('jwt');
+    this.router.navigate(['login']);
+
+      }
+    });
 
 // construction du formulaire
 this.profileForm = new FormGroup({
